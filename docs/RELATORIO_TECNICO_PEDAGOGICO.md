@@ -1,135 +1,108 @@
-# Relatório técnico-pedagógico: fases 1 e 2
+# Relatório técnico-pedagógico: versão final 1.0.0
 
 Semiologia Cardiovascular Interativa · E2M08 · 2026/2 · Prof. João Frederico Musial
-Versão do protótipo: 0.2.0 · data: 22/10/2026
+Data: 23/10/2026
 
 ## 1. Síntese
 
-O protótipo funcional está pronto e roda em dois modos (apresentação 16:9 e estudo responsivo) a partir do mesmo código. Contém nove telas: capa, roteiro semiológico, caso condutor, anatomia funcional interativa, laboratório do ciclo cardíaco, focos de ausculta com exercício, ausculta multimídia, atividade "Escute e identifique" e um mapa das seções previstas. Todas as interações são reais: nenhuma tela foi substituída por descrição. A fase 3 (expansão) aguarda a validação do professor.
+A aula está completa: 29 telas, cerca de 50 minutos, com doze componentes interativos sobre o mesmo núcleo do protótipo aprovado. Todo o conteúdo dos 33 slides do deck v3 foi incorporado (seção 3), com as revisões científicas já feitas preservadas. Funciona em modo apresentação (16:9) e em modo estudo (rolagem, celular), no site estático para o GitHub Pages e em arquivo único offline. Nada foi publicado.
 
-## 2. Fontes efetivamente consultadas
+## 2. Sequência final e tempo
 
-Na pasta "Semiologia Cardiovascular" do computador do professor:
+| # | Tela | Seção | Tipo | Tempo |
+|---|---|---|---|---|
+| 1 | Capa | Abertura | ECG animado com B1 e B2 | 1 |
+| 2 | Roteiro do exame | Abertura | revelação das quatro técnicas | 2 |
+| 3 | Caso condutor | Abertura | texto | 2 |
+| 4 | Anatomia funcional | Bases | coração explorável, percurso do sangue | 2 |
+| 5 | Laboratório do ciclo cardíaco | Bases | simulador | 4 |
+| 6 | ECG normal | Bases | papel milimetrado, intervalos, régua de FC | 1 |
+| 7 | Os cinco sintomas | Anamnese | revelação por sintoma | 2 |
+| 8 | Esforço, dor e risco | Anamnese | texto | 1 |
+| 9 | Preparação e sequência | Exame: preparo e PA | texto | 1 |
+| 10 | Pressão arterial: técnica | Exame: preparo e PA | ilustração N2 + passos | 2 |
+| 11 | Sons de Korotkoff | Exame: preparo e PA | simulador com exercício | 4 |
+| 12 | Pulsos arteriais | Pulsos e pescoço | mapa clicável | 2 |
+| 13 | Carótidas e aorta | Pulsos e pescoço | ilustração N4 | 1 |
+| 14 | Jugulares e PVJ | Pulsos e pescoço | modelo com cabeceira ajustável | 2 |
+| 15 | Inspeção | Precórdio | imagem 05 com pontos numerados | 1 |
+| 16 | Percussão | Precórdio | imagem 03 | 1 |
+| 17 | Palpação e ictus | Precórdio | ilustrações N6a e N6b | 2 |
+| 18 | Focos de ausculta | Ausculta | tórax vetorial com exercício | 2 |
+| 19 | Estetoscópio e sincronização | Ausculta | pulso carotídeo e bulhas com som | 2 |
+| 20 | Posições de ausculta | Ausculta | imagem 04 com pontos numerados | 1 |
+| 21 | Bulhas e sopros | Ausculta | seis sons sincronizados | 3 |
+| 22 | Ritmo e desdobramento | Ausculta | diagrama e sons | 2* |
+| 23 | Escute e identifique | Ausculta | atividade com feedback | 2 |
+| 24 | Como descrever um sopro | Ausculta | descritor com sete características | 2 |
+| 25 | Edema | Periferia e registro | cacifo por grau | 1 |
+| 26 | Registro no prontuário | Periferia e registro | construtor do normal ao alterado | 2 |
+| 27 | Checklist da estação | Fechamento | caixas de seleção, sem armazenamento | 1 |
+| 28 | Para levar | Fechamento | texto | 1 |
+| 29 | Referências | Fechamento | texto | 0 |
 
-| Fonte | Uso |
+Total: 50 min. *A tela 22 pode ficar para o estudo se o tempo apertar (48 min); a nota do apresentador indica isso. Cada tela traz o tempo previsto nas notas.
+
+## 3. Destino dos 33 slides originais
+
+| Original | Tela final |
 |---|---|
-| Projeto LuaLaTeX v3 (33 slides) e `Semiologia_Cardiovascular_E2M08_2026-2_v3.pdf` | conteúdo de referência, revisões científicas já feitas, ordem dos slides (mapeamento na seção 7) |
-| `Previa_HTML5_Semiologia_Cardiovascular_ALTA_RESOLUCAO` (index.html, README.html, slides em imagem, pasta audios) | diagnóstico: a prévia anterior é uma galeria de imagens dos slides, sem interação; os áudios são declarados sintéticos no próprio README |
-| `adultCASE1.mp3` | examinado (14 s, 11 025 Hz); procedência e licença desconhecidas, **não incluído** |
-| `Imagens_Semiologia_Cardiovascular_Revisadas` (01 a 05) | avaliadas; reservadas para a fase 3 (seção 9) |
-| `Ilustracoes_Semiologia_Cardiovascukar` (N2, N4, N6a, N6b, N7a a N7d) | avaliadas; reservadas para a fase 3 |
-| Swartz, coração e vascular (PDF); `Exame_fisico_Cardiovascular.pdf`; `Manual Docente E2M08_2026.2.pdf` | conferência de conteúdo e de escopo do encontro |
-| HyperHeart (University of Utah), página pública | estudo de princípios de interface; nada foi copiado (seção 6) |
+| 1 Capa · 2 Objetivos · 3 Caso | 1 · 2 (roteiro) · 3 |
+| 4 Anatomia · 5 Ciclo · 6 ECG | 4 · 5 · 6 |
+| 7 Referências do tórax | 18 (linhas, ângulo esternal, numeração dos EIC) |
+| 8 Sintomas · 9 Risco · 10 Sequência | 7 · 8 · 9 |
+| 11 PA técnica · 12 Korotkoff | 10 · 11 |
+| 13 Pulsos · 14 Carótidas · 15 Jugulares | 12 · 13 · 14 |
+| 16 Inspeção · 17 Percussão · 18 Palpação · 19 Ictus | 15 · 16 · 17 (18 e 19 fundidos) |
+| 20 Focos · 21 Estetoscópio · 22 Posições | 18 · 19 · 20 |
+| 23 B1 e B2 · 25 B3 e B4 · 26 Sopros | 21 (e camada B3/B4 do laboratório) |
+| 24 Ritmo e desdobramento | 22 |
+| 27 Descrever sopro | 24 |
+| 28 Edema | 25 |
+| 29 Registro normal · 30 Registro do caso | 26 (construtor com os dois) |
+| 31 Checklist · 32 Para levar · 33 Referências | 27 · 28 · 29 |
 
-Não encontrado: a aula de abdome mencionada como referência de ordem prática. A regra "no abdome, ausculta antes da percussão e da palpação" foi aplicada por ser consenso dos livros-texto, não por leitura daquele arquivo.
+## 4. Simuladores acrescentados na versão final
 
-## 3. Diagnóstico do material atual
+**ECG.** Papel a 25 mm/s e 10 mm/mV; destaque de P, PR, QRS, T e RR com a medida em quadradinhos; régua de 2 a 7 quadrados grandes entre dois R com FC = 300 ÷ n e classificação pela diretriz de laudo da SBC 2022 (normal em vigília de 50 a 99 bpm); B1 e B2 sob o traçado.
 
-O deck v3 é cientificamente revisado e bem ordenado, mas é linear e estático. Três conteúdos dependem de tempo e perdem sentido quando congelados numa imagem: o ciclo cardíaco (sincronia entre valvas, pressões, volume, ECG e bulhas), a ausculta (som) e a pressão venosa jugular (ângulo do leito). A prévia HTML anterior não resolve isso porque apenas exibe as imagens dos slides. Os demais conteúdos (anamnese, sequência, registro) funcionam bem como texto progressivo e não precisam de simulação; neles a interação útil é revelar em etapas e conferir.
+**Pressão arterial (Korotkoff).** Manômetro aneroide de 0 a 300 mmHg com marcas de 2 mmHg; pera (cada aperto, +15 mmHg), válvula a 2 ou 5 mmHg/s, pulso radial que some acima da sistólica (estimativa palpatória), batimentos a 72 bpm e sons esquemáticos das fases I a IV. Casos: PA normal, Sr. Antônio (156 × 94), sons até zero (registro 150/70/0) e hiato auscultatório. No exercício, o valor numérico e as fases ficam ocultos; o feedback compara a leitura com o caso, aponta inflação insuficiente, desinsuflação rápida e arredondamento, e classifica pela Diretriz de Hipertensão 2025, lembrando que o diagnóstico exige medidas em duas ou mais consultas. As faixas das fases são esquemáticas; o critério de leitura (sistólica na fase I, diastólica na fase V, exceção na fase IV) segue a diretriz de medidas de 2023.
 
-## 4. Nova organização da aula
+**Pressão venosa jugular.** Vista lateral com cabeceira de 0° a 90°. Modelo: o átrio direito fica cerca de 5 cm abaixo do ângulo esternal na vertical; a coluna venosa sobe até um nível horizontal; a altura h acima do ângulo esternal não muda com a inclinação, só muda onde o topo aparece (ou some atrás da clavícula, ou enche até a mandíbula). Pacientes com PVC de 2, 7 e 14 cmH₂O. A tela declara que o modelo é esquemático e fora de escala.
 
-O eixo didático é INSPEÇÃO, PERCUSSÃO, PALPAÇÃO, AUSCULTA, apresentado no roteiro com a distinção explícita entre ordem didática e ordem prática (no coração, PA, pulsos e pescoço vêm antes do precórdio; no abdome, ausculta antes de percussão e palpação). A percussão aparece com indicação de baixo rendimento.
+**Pulsos.** Figura em posição anatômica com trajeto arterial e sete pulsos bilaterais; o poplíteo aparece tracejado por ser posterior.
 
-Sequência proposta para a versão completa (≈ 50 min):
+**Sincronização.** Pulso carotídeo e bulhas no mesmo eixo, com som; opção de sobrepor o pulso radial atrasado.
 
-| Bloco | Telas | Tempo |
-|---|---|---|
-| Abertura: capa, roteiro, caso condutor | 3 | 5 min |
-| Bases: anatomia funcional, ciclo cardíaco, ECG | 3 | 10 min |
-| Anamnese: sintomas e risco | 2 | 4 min |
-| Preparação, PA (técnica e Korotkoff), pulsos, pescoço (carótidas e PVJ) | 5 | 10 min |
-| Precórdio: inspeção, percussão, palpação | 3 | 5 min |
-| Ausculta: focos, estetoscópio e posições, bulhas, B3 e B4, sopros, descrição | 5 | 10 min |
-| Periferia, registro, checklist, síntese, referências | 4 a 5 | 6 min |
+**Descritor de sopro.** Fase, momento, foco, irradiação, intensidade (Levine I a VI, com frêmito a partir do IV), timbre, qualidade e variação; monta a frase de registro e desenha a forma do sopro no ciclo.
 
-Total previsto: 25 a 26 telas, dentro do teto de 30.
+**Edema.** Corte da pele sobre a tíbia, polegar por 2 a 3 s e retorno acelerado com o tempo real indicado. Graus didáticos de 1+ a 4+ (cerca de 2, 4, 6 e 8 mm); a tela informa que as escalas variam entre livros e orienta descrever profundidade e tempo.
 
-## 5. Identidade visual
+**Registro.** Seis linhas do prontuário com opções; atalhos "Exame normal" e "Sr. Antônio"; o que difere do normal fica destacado; siglas por extenso.
 
-"Atlas clínico": fundo branco-azulado (#fbfcfd), tinta azul-petróleo escuro, cor de destaque petróleo (#0e5462), cinza-azulado para estruturas secundárias. Vermelho e azul são reservados à função circulatória (sangue arterial e venoso, aorta e átrio esquerdo nos traçados), âmbar ao som (bulhas, sopros, selo "som sintetizado"), verde e terracota ao feedback certo e "ainda não". Tipografia Inter (variável) para texto e IBM Plex Mono para números e onomatopeias, ambas embutidas. A composição evita caixas decorativas: separação por filetes, colunas e escala tipográfica. As animações só aparecem quando explicam algo (fluxo, abertura valvar, cursor do tempo, desenho do ECG na capa) e respeitam "reduzir movimento".
+Componentes genéricos reutilizáveis: revelação progressiva (sintomas), pontos sobre imagem (inspeção, posições), botão de som (ritmo) e checklist.
 
-## 6. Plano de animação e interação
+## 5. Ilustrações e sons
 
-| Conteúdo | Decisão | Motivo |
-|---|---|---|
-| Ciclo cardíaco | simulador completo (implementado) | a sincronia é o próprio conteúdo |
-| Anatomia | ilustração explorável e percurso do sangue (implementado) | prepara focos e bulhas; sem vista externa, que não acrescenta ao exame |
-| Focos | tórax interativo com modo exercício (implementado) | localizar é uma habilidade, treinável por clique com feedback |
-| Bulhas e sopros | áudio sincronizado à forma de onda (implementado) | cronologia é o que se ensina; marcas mostram onde cada som cai |
-| Fixação | atividade de escuta com feedback explicativo (implementada) | compara a hipótese do aluno com o evento real |
-| Korotkoff | simulador de manômetro e sons, com leitura | fase 3 |
-| PVJ | animação com ângulo da cabeceira ajustável, rotulando modelo e realidade | fase 3 |
-| Palpação do precórdio | ilustrações estáticas progressivas | o gesto é tátil; animar não ensina mais que a imagem certa |
-| Anamnese, sequência, registro | revelação progressiva e construtor de registro | texto bem dosado basta |
+Incorporadas, convertidas para WebP: N2 (PA), N4 (carótida), N6a e N6b (palpação), 03 (percussão), 04 (posições) e 05 (tórax base, inspeção). Não usadas: 01 (erro na seta do sopro de estenose mitral, já apontado), 02 (foco tricúspide à direita do paciente; a tela de focos usa o tórax vetorial, que segue Porto: base do xifoide, ligeiramente à esquerda), N7a a N7d (substituídas pela imagem 04), e as imagens reaproveitadas do deck de 2025 (sinal de Levine, escala de edema) por não terem licença documentada; o sinal de Levine ficou descrito em texto e o edema ganhou simulador próprio. Para a N4 permanece a observação de revisões anteriores sobre a posição dos dedos.
 
-Princípios do HyperHeart adotados como ideia, com solução própria: eixo de tempo comum a todos os traçados com cursor varrendo; fase atual destacada numa faixa; reprodução, pausa e passo a passo. Diferenças deliberadas: o modelo garante volume constante nas fases isovolumétricas por construção (interpolação monotônica e verificação automática de coerência); B3 e B4 ficam desligadas por padrão, numa camada opcional, para não sugerir que fazem parte do ciclo normal do adulto; as fases são clicáveis; o som pode acompanhar o cursor. Nenhum código, imagem, cor ou texto do HyperHeart foi reproduzido (licença CC BY-NC 4.0).
+Sons: todos sintetizados no navegador e rotulados como esquemáticos. Sem resposta sobre o `adultCASE1.mp3`, ele continua fora.
 
-### Modelo do ciclo (valores ilustrativos, rotulados como tal na tela)
+## 6. Decisões tomadas sem consulta (revisáveis)
 
-FC 75 bpm (ciclo de 0,8 s). Fases: sístole atrial 0 a 0,12 s; contração isovolumétrica 0,12 a 0,17; ejeção 0,17 a 0,42; relaxamento isovolumétrico 0,42 a 0,50; enchimento rápido 0,50 a 0,63; diástase 0,63 a 0,80. B1 no fechamento das AV (0,12), B2 no fechamento das semilunares, ao fim da onda T (0,42), B3 a 0,18 s de B2, B4 durante a contração atrial. Volume diastólico final 120 mL, sistólico final 50 mL; pressão do VE até 120 mmHg; aorta entre 80 e 120 mmHg com incisura; átrio esquerdo com ondas a, c e v. Estado das valvas, tamanho das câmaras, tensão da parede e partículas de fluxo derivam do modelo: não há fluxo nas fases isovolumétricas.
+1. Palpação e ictus em uma tela só, para manter 29 telas.
+2. Ritmo e desdobramento mantidos como tela própria, marcada como opcional em sala.
+3. Gravações reais não incluídas; a pasta `src/assets/audio` está pronta para recebê-las.
+4. Imagem 02 fora; tórax vetorial mantido.
 
-## 7. Mapeamento dos 33 slides originais
+## 7. Arquitetura
 
-| # | Slide original | Destino | Situação |
-|---|---|---|---|
-| 1 | Capa | 01 Capa refeita (ECG com B1 e B2) | protótipo |
-| 2 | O que vamos fazer hoje | 02 Roteiro semiológico; lista de objetivos na fase 3 | parcial (roteiro) |
-| 3 | O caso que vai nos acompanhar | 03 Caso condutor | protótipo |
-| 4 | O coração que vamos examinar | 04 Anatomia funcional interativa | protótipo |
-| 5 | Ciclo cardíaco: onde nascem B1 e B2 | 05 Laboratório do ciclo | protótipo |
-| 6 | Eletrocardiograma (ECG) normal | camada ECG do laboratório + tela própria anotada | parcial; tela própria na fase 3 |
-| 7 | Referências do tórax | linhas, ângulo esternal e EIC no tórax dos focos | parcial; modo "referências" na fase 3 |
-| 8 | Anamnese: cinco sintomas | Anamnese, revelação progressiva | fase 3 |
-| 9 | Anamnese: esforço, dor e risco | Anamnese | fase 3 |
-| 10 | Antes de tocar: preparação e sequência | Preparação, lista conferível | fase 3 |
-| 11 | PA (1): técnica | PA, sequência de passos | fase 3 |
-| 12 | PA (2): Korotkoff | simulador de Korotkoff com exercício | fase 3 |
-| 13 | Pulsos arteriais | mapa de pulsos interativo | fase 3 |
-| 14 | Pescoço: carótidas e aorta | Pescoço | fase 3 |
-| 15 | Pescoço: jugulares e PVJ | animação da PVJ com ângulo ajustável | fase 3 |
-| 16 | Precórdio 1: inspeção | ilustração progressiva | fase 3 |
-| 17 | Precórdio 2: percussão | tela breve (imagem 03) + roteiro | parcial (roteiro) |
-| 18 | Precórdio 3: palpação | ilustrações progressivas | fase 3 |
-| 19 | Palpação: ictus, impulsões e frêmitos | idem | fase 3 |
-| 20 | Precórdio 4: focos | 06 Focos com exercício | protótipo |
-| 21 | Estetoscópio e sincronização | Ausculta: estetoscópio e pulso carotídeo | fase 3 |
-| 22 | Ausculta: posições | imagem 04 revisada | fase 3 |
-| 23 | B1 e B2 | 07 Ausculta (normal) | protótipo |
-| 24 | Ritmo, frequência e desdobramento | 07 (desdobramento) + ritmo | parcial |
-| 25 | B3 e B4 | 07 + camada B3/B4 do laboratório | protótipo |
-| 26 | Sopros: identificar e situar | 07 (sistólico e diastólico) | protótipo |
-| 27 | Como descrever um sopro | descritor interativo (fase, forma, foco, irradiação, intensidade) | fase 3 |
-| 28 | Periferia: edema | tela com escala de cacifo | fase 3 |
-| 29 | Registro: exame normal | construtor de registro | fase 3 |
-| 30 | Registro: Sr. Antônio | construtor de registro | fase 3 |
-| 31 | Checklist da estação | checklist interativo (sem armazenamento) | fase 3 |
-| 32 | Para levar | síntese final | fase 3 |
-| 33 | Referências | Referências e créditos | fase 3 |
-| novo | Atividade "Escute e identifique" | 08 | protótipo |
+Sem mudanças em relação ao protótipo: Vite 5, reveal.js 5, JavaScript puro, SVG e Web Audio; modo estudo sem reveal.js; dois pacotes (site e arquivo único). As imagens são citadas nos slides como `@img/nome.webp` e resolvidas no build (arquivo com hash no site, data URI no arquivo offline). O arquivo offline passou a 2,2 MB por causa das ilustrações.
 
-## 8. Arquitetura e justificativa
+## 8. Pendências do professor
 
-Site estático com Vite 5 e reveal.js 5, em JavaScript puro (módulos ES), sem React. Os simuladores são SVG atualizados por `requestAnimationFrame`; um framework de componentes acrescentaria peso e uma camada de renderização sem ganho para esse tipo de gráfico. O reveal.js resolve escala sem corte do quadro 1600 × 900, notas do apresentador, progresso e navegação. No modo estudo o reveal.js não é iniciado: as mesmas seções viram um documento rolável e responsivo, porque a visualização em rolagem do reveal.js apenas reduz o quadro 16:9, ilegível no celular.
+Revisar a aula no projetor da sala; decidir sobre gravações reais; autorizar e nomear o repositório para o GitHub Pages.
 
-Componentes são registrados por `data-component` e ativados por visibilidade real (IntersectionObserver): saem de cena pausados, nos dois modos. Teclas usadas por um simulador não chegam ao reveal.js, então as setas mudam a fase e não o slide. O áudio é Web Audio: nenhum som toca sem clique, há volume e mudo globais e pausa geral.
+## 9. Resumo
 
-Dois pacotes: `dist/` para o GitHub Pages (caminhos relativos) e `dist-offline/index.html`, arquivo único de cerca de 440 kB com tudo embutido, que abre com duplo clique sem internet.
-
-## 9. Ilustrações e sons
-
-Ilustrações do protótipo: todas desenhadas em código para este projeto (coração, traçados, tórax, ECG da capa, ícones). As imagens revisadas e as ilustrações do professor serão usadas na fase 3 conforme o mapeamento; duas ressalvas permanecem: na imagem 02 o foco tricúspide está à direita do paciente, enquanto Porto o situa na base do xifoide, ligeiramente à esquerda (o tórax web segue Porto); a imagem 01 segue fora de uso pelo erro já apontado na seta do sopro de estenose mitral.
-
-Sons: todos sintetizados no navegador, marcados em cada tela como "Som sintetizado esquemático". Ensinam cronologia, não timbre. Nenhuma gravação clínica foi incluída porque nenhuma fonte com licença compatível foi verificada nesta fase. O `adultCASE1.mp3` só entra se a procedência e a licença forem documentadas.
-
-## 10. Pendências e decisões do professor
-
-1. Validar identidade visual, ritmo das telas e o laboratório do ciclo antes da expansão.
-2. Informar a procedência do `adultCASE1.mp3` ou autorizar a busca de gravações com licença aberta, a conferir uma a uma.
-3. Decidir sobre a imagem 02 (corrigir a posição do foco tricúspide ou manter o tórax vetorial).
-4. Escolher nome do repositório e autorizar a publicação no GitHub Pages (instruções em `PUBLICACAO_GITHUB_PAGES.md`).
-5. Confirmar se o modo estudo deve trazer texto complementar por tela (já existe no laboratório e nos focos) ou ficar idêntico ao de apresentação.
-
-## 11. Resumo
-
-O protótipo entrega os sete elementos mínimos pedidos, com interação real, dois modos de uso, funcionamento offline e verificação de coerência fisiológica embutida. A arquitetura separa núcleo e conteúdo, o que permite expandir a aula e reaproveitar a base em outras. As decisões que dependem do professor são a validação visual, a política de gravações reais, a imagem 02 e a publicação.
+A versão final cobre todo o conteúdo do deck v3 em 29 telas e 50 minutos, com doze componentes interativos. Os simuladores de PA e de PVJ ensinam os dois erros mais comuns de técnica (inflar pouco ou desinsuflar rápido; esquecer que h é vertical). As ilustrações aprovadas foram incorporadas e as que tinham erro ou licença incerta ficaram de fora. Publicação e gravações reais dependem da decisão do professor.

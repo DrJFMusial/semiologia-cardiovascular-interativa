@@ -1,16 +1,16 @@
 {
   "name": "semiologia-cardiovascular-interativa",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "private": true,
   "description": "Semiologia Cardiovascular Interativa | E2M08 2026/2 | Prof. João Frederico Musial",
   "type": "module",
   "scripts": {
-    "test": "node --test tests/*.test.js",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "build:offline": "vite build --mode offline",
-    "build:all": "vite build && vite build --mode offline"
+    "build:all": "vite build && vite build --mode offline",
+    "test": "node --test tests/*.test.js"
   },
   "dependencies": {
     "reveal.js": "5.2.1"

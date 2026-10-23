@@ -1,3 +1,7 @@
+# Nota de migração v1.0.0
+
+O texto abaixo documenta a revisão dirigida realizada na v0.2.1 e suas limitações, preservadas nesta migração. Os novos módulos do anexo v1.0.0 foram importados e submetidos a testes funcionais; não se afirma revisão científica integral independente de PA, PVJ, edema ou demais conteúdos novos. Imagens: autoria e revisão declaradas pelo professor no anexo. Todos os áudios continuam sintéticos.
+
 # Validação científica — escopo e limitações
 
 Revisão dirigida em 23/10/2026; não constitui validação clínica integral. Prioridades: cronologia, isovolumetria e descrição de B4. Os relatórios herdados não foram usados como prova de funcionamento.

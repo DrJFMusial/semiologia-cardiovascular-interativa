@@ -12,6 +12,7 @@ import './styles/tokens.css';
 import './styles/base.css';
 import './styles/slides.css';
 import './styles/components.css';
+import './styles/sections.css';
 import './styles/heart.css';
 
 import { register, mountAll } from './core/registry.js';
@@ -22,11 +23,25 @@ import { focos } from './simulators/focos/index.js';
 import { ausculta } from './simulators/ausculta/index.js';
 import { escuta } from './simulators/quiz/escuta.js';
 import { roteiro } from './components/roteiro.js';
+import { revelar, hotspots, somchip, checklist } from './components/generic.js';
+import { registro } from './components/registro.js';
+import { korotkoffSim } from './simulators/korotkoff/index.js';
+import { pvj } from './simulators/pvj/index.js';
+import { ecg } from './simulators/ecg/index.js';
+import { pulsos } from './simulators/pulsos/index.js';
+import { sopro } from './simulators/sopro/index.js';
+import { edema } from './simulators/edema/index.js';
+import { sincronia } from './simulators/sincronia/index.js';
 import { selfCheck } from './simulators/cycle/model.js';
 
 // ---- conteúdo: um arquivo HTML por slide, em ordem alfabética ----------------
 const files = import.meta.glob('./slides/*.html', { query: '?raw', import: 'default', eager: true });
-const html = Object.keys(files).sort().map((k) => files[k]).join('\n');
+// imagens: os slides citam "@img/nome.webp"; o Vite resolve o endereço final
+// (arquivo com hash no site, data URI no pacote offline)
+const imgs = import.meta.glob('./assets/images/*.webp', { query: '?url', import: 'default', eager: true });
+const imgUrl = Object.fromEntries(Object.entries(imgs).map(([k, v]) => [k.split('/').pop(), v]));
+const html = Object.keys(files).sort().map((k) => files[k]).join('\n')
+  .replace(/@img\/([\w.-]+)/g, (m, n) => imgUrl[n] || m);
 document.querySelector('.reveal .slides').innerHTML = html;
 
 // ---- modo ------------------------------------------------------------------------
@@ -45,6 +60,18 @@ register('focos', focos);
 register('ausculta', ausculta);
 register('escuta', escuta);
 register('roteiro', roteiro);
+register('revelar', revelar);
+register('hotspots', hotspots);
+register('somchip', somchip);
+register('checklist', checklist);
+register('registro', registro);
+register('korotkoff', korotkoffSim);
+register('pvj', pvj);
+register('ecg', ecg);
+register('pulsos', pulsos);
+register('sopro', sopro);
+register('edema', edema);
+register('sincronia', sincronia);
 
 /* Modo apresentação: Reveal com tela fixa de 1600 × 900 escalada sem corte.
    Modo estudo: documento rolável e responsivo (sem escala), para leitura no

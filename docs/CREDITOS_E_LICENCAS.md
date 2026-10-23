@@ -9,8 +9,8 @@ Conteúdo didático, caso condutor e roteiro: Prof. João Frederico Musial, Medi
 | Componente | Versão | Licença | Observação |
 |---|---|---|---|
 | reveal.js (Hakim El Hattab e colaboradores) | 5.2.1 | MIT | incluído no pacote final |
-| Vite | 5.4.11 | MIT | ferramenta de build, não vai para o pacote final |
-| vite-plugin-singlefile | 2.0.3 | MIT | ferramenta de build, não vai para o pacote final |
+| Vite | 7.3.7 | MIT | ferramenta de build, não vai para o pacote final |
+| vite-plugin-singlefile | 2.3.4 | MIT | ferramenta de build, não vai para o pacote final |
 
 ## Fontes
 
@@ -23,9 +23,20 @@ Incluído apenas o subconjunto latino, distribuído sem modificação.
 
 ## Ilustrações
 
-Todas as ilustrações do protótipo (coração esquemático, traçados do ciclo, tórax e focos, ECG da capa, ícones) foram desenhadas em código para este projeto. Nenhuma imagem de terceiros foi usada.
+Desenhadas em código para este projeto: coração esquemático, traçados do ciclo, ECG, tórax e focos, manômetro, figura dos pulsos, modelo da PVJ, corte do edema, diagramas de sopro e de desdobramento, ícones.
 
-Ilustrações do professor (pastas `Ilustracoes_Semiologia_Cardiovascukar` e `Imagens_Semiologia_Cardiovascular_Revisadas`) ainda não foram incorporadas; ao entrarem na fase 3, serão creditadas aqui com a ferramenta de geração e a revisão anatômica correspondentes.
+Ilustrações do professor, incorporadas em `src/assets/images` (convertidas para WebP, sem outras alterações):
+
+| Arquivo | Origem | Tela |
+|---|---|---|
+| pa-posicao.webp | N2 (pasta Ilustracoes) | Pressão arterial: técnica |
+| carotida-palpacao.webp | N4 | Carótidas e aorta |
+| palpacao-palma.webp, palpacao-polpas.webp | N6a, N6b | Palpação e ictus |
+| percussao.webp | 03 (Imagens revisadas) | Percussão |
+| posicoes-ausculta.webp | 04 | Posições de ausculta |
+| torax-anterior.webp | 05 | Inspeção |
+
+Produzidas pelo autor com ferramenta de geração de imagem e revisadas por ele.
 
 ## Sons
 

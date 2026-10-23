@@ -1,6 +1,23 @@
-# Relatório de QA: protótipo 0.2.0
+# Relatório de QA: versão 1.0.0
 
-Testes automatizados com Playwright e Chromium (motor do Chrome e do Edge), em 22/10/2026. Scripts em `sandbox/`.
+Testes automatizados com Playwright e Chromium (motor do Chrome e do Edge), em 23/10/2026. Scripts em `sandbox/`.
+
+## Versão final (29 telas)
+
+| Verificação | Resultado |
+|---|---|
+| Todas as telas em 1920 × 1080 e 1366 × 768 | zero erros no console; nenhum elemento ultrapassa a borda inferior do quadro (verificação automática por tela) |
+| Modo estudo em 390 × 844 | sem rolagem horizontal em nenhuma seção |
+| Korotkoff: inflar, abrir válvula, desinsuflar | batimentos registrados nas fases certas; exercício com leitura 120 × 80 para caso 108 × 70 gerou feedback de erro, de desinsuflação rápida, de arredondamento e a classificação |
+| Korotkoff e PVJ com setas | setas atuam no simulador; o slide não muda |
+| ECG, sintomas, pulsos, inspeção, sincronia, sons do ritmo, descritor de sopro, edema, registro, checklist | interações executadas sem erro; descritor gerou "Sopro protodiastólico em foco aórtico, grau IV/VI, com frêmito…" |
+| Checklist | marcar caixas não troca de slide; contagem correta |
+| Arquivo offline por `file://` | 7 ilustrações carregadas (data URI); fontes carregadas; nenhuma requisição externa |
+| Site em subdiretório | 29 telas, nenhuma requisição externa |
+| Desempenho com o ciclo em reprodução | 60 fps |
+| Tempo previsto (notas do apresentador) | 50 min; 48 sem a tela de ritmo |
+
+## Protótipo (fase 2)
 
 ## Resultados
 

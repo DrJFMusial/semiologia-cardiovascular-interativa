@@ -3,27 +3,27 @@
 E2M08 · Introdução à Propedêutica Médica · Semestre 2026/2
 Prof. João Frederico Musial · Medicina · Centro Universitário Campo Real
 
-**Acesse a aplicação:** https://drjfmusial.github.io/semiologia-cardiovascular-interativa/
+Aplicação: https://drjfmusial.github.io/semiologia-cardiovascular-interativa/
 
-[Release v0.2.1](https://github.com/DrJFMusial/semiologia-cardiovascular-interativa/releases/tag/v0.2.1)
+Migração do anexo v1.0.0 com preservação das correções técnicas e da descrição de B4 da v0.2.1. Veja [MIGRATION_v1.0.0.md](MIGRATION_v1.0.0.md).
 
 Aplicação educacional estática (HTML5, CSS, JavaScript) para a aula de semiologia cardiovascular. Um único código serve a dois usos:
 
 - **Modo apresentação**: tela 16:9 (1600 × 900) escalada sem corte para qualquer projetor, navegação por setas, notas do apresentador.
 - **Modo estudo**: documento rolável e responsivo para computador e celular, com os mesmos simuladores e textos complementares.
 
-Versão atual: **0.2.1, primeira iteração auditada localmente**. Não há back-end, login nem coleta de dados.
+Versão atual: **1.0.0, versão final da aula (29 telas, cerca de 50 min)**. Não há back-end, login nem coleta de dados.
 
 ## Requisitos
 
-- Node.js 22.12+ e npm (verificado localmente com Node 24.19.0; CI configurada para Node 22).
+- Node.js 22.12+ e npm.
 - Navegador atual: Chrome, Edge ou Firefox.
 
 ## Instalar e executar
 
 ```bash
-npm ci               # instala as versões exatas do package-lock.json
-npm test             # lógica determinística do modelo e das respostas
+npm ci               # instala as versões exatas do lockfile
+npm test             # regressões do modelo, quiz e integridade da aula
 npm run dev          # servidor local com recarga automática (http://localhost:5173)
 ```
 
@@ -46,9 +46,9 @@ O `dist/` usa caminhos relativos (`base: './'`) e funciona em qualquer subdiret�
 |---|---|
 | ← → | Slide anterior ou seguinte (fora dos simuladores) |
 | Clique no simulador, depois ← → | Fase anterior ou seguinte do ciclo (não troca de slide) |
-| Shift + ← → no simulador | Quadro anterior ou seguinte de 10 ms; pausa a reprodução |
 | Espaço | Reproduzir ou pausar o ciclo (com o simulador em foco) |
-| ↑ ↓ | Trocar o som na ausculta |
+| ↑ ↓ | Trocar o som na ausculta; no simulador de PA, ↑ infla; na PVJ, muda a cabeceira |
+| Espaço (simulador de PA em foco) | Abrir ou fechar a válvula |
 | M | Menu de seções |
 | X | Pausar todas as animações e sons (P continua sendo "slide anterior" no Reveal) |
 | S | Notas do apresentador (janela própria) |
@@ -64,18 +64,25 @@ public/favicon.svg
 src/
   main.js                  monta os slides, escolhe o modo, registra componentes
   slides/NN-nome.html      um arquivo por slide, em ordem alfabética
-  components/              componentes de conteúdo (roteiro)
+  components/              roteiro, registro e componentes genéricos (revelar, pontos sobre imagem, som, checklist)
   simulators/
     cycle/                 modelo fisiológico, coração SVG, traçados, laboratório
     anatomy/               anatomia funcional
     focos/                 tórax e focos de ausculta, com exercício
     ausculta/              sons esquemáticos sincronizados com forma de onda
     quiz/                  atividade "Escute e identifique"
+    ecg/                   ECG em papel milimetrado, intervalos e régua de FC
+    korotkoff/             manômetro, pera, válvula e sons de Korotkoff (explorar e exercício)
+    pulsos/                mapa de pulsos arteriais
+    pvj/                   pressão venosa jugular com cabeceira ajustável
+    sincronia/             pulso carotídeo e bulhas ("quem é B1?")
+    sopro/                 descritor de sopro (sete características, Levine)
+    edema/                 cacifo e graus
   core/                    áudio, registro de componentes, barra, ícones e teclado
   styles/                  tokens, base, slides, componentes, coração, fontes
   assets/fonts/            Inter e IBM Plex Mono (OFL 1.1), subconjunto latino
-  assets/images/           reservado para ilustrações licenciadas (fase 3)
-  assets/audio/            reservado para gravações licenciadas (fase 3)
+  assets/images/           ilustrações do professor (webp), citadas nos slides como @img/nome.webp
+  assets/audio/            reservado para gravações com licença compatível (hoje vazio)
 docs/                      relatório, mapeamento, créditos, QA, publicação
 .github/workflows/         publicação automática no GitHub Pages (inativa até haver repositório)
 ```
@@ -91,7 +98,7 @@ O núcleo (`src/core`, estilos e simuladores) é independente do conteúdo. Uma 
 
 ## Publicação no GitHub Pages
 
-Publicação inicial autorizada pelo professor e confirmada em 23/10/2026. Pages usa GitHub Actions; cada envio a `main` executa `npm ci`, `npm test` e build antes do deploy. Instruções de configuração em [`docs/PUBLICACAO_GITHUB_PAGES.md`](docs/PUBLICACAO_GITHUB_PAGES.md).
+O professor autorizou a atualização da aplicação publicada. Envio a main executa testes, build e deploy pelo GitHub Actions. Instruções completas em [`docs/PUBLICACAO_GITHUB_PAGES.md`](docs/PUBLICACAO_GITHUB_PAGES.md).
 
 ## Dependências
 
@@ -101,10 +108,4 @@ Publicação inicial autorizada pelo professor e confirmada em 23/10/2026. Pages
 | vite | 7.3.7 | MIT | servidor de desenvolvimento e build (só desenvolvimento) |
 | vite-plugin-singlefile | 2.3.4 | MIT | build offline em arquivo único (só desenvolvimento) |
 
-Fontes: Inter e IBM Plex Mono, SIL Open Font License 1.1, incluídas em `src/assets/fonts`. Créditos atuais em [ASSET_CREDITS.md](ASSET_CREDITS.md); o documento em `docs/` é histórico.
-
-## Auditoria e evolução
-
-[AUDIT.md](AUDIT.md) reúne diagnóstico, problemas e verificações; [SCIENTIFIC_VALIDATION.md](SCIENTIFIC_VALIDATION.md) separa evidência de simplificação e limitações. [ARCHITECTURE.md](ARCHITECTURE.md), [CHANGELOG.md](CHANGELOG.md) e [ROADMAP.md](ROADMAP.md) orientam a manutenção.
-
-As pressões são curvas qualitativas, não um solver hemodinâmico causal. Gravações clínicas autênticas e novos simuladores permanecem pendentes. Os sons existentes são síntese esquemática. A publicação não constitui validação científica integral. O histórico original e a correspondência das importações estão em [docs/history/README.md](docs/history/README.md).
+Fontes: Inter e IBM Plex Mono, SIL Open Font License 1.1, incluídas em `src/assets/fonts`. Créditos completos em [`docs/CREDITOS_E_LICENCAS.md`](docs/CREDITOS_E_LICENCAS.md).

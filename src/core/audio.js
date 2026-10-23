@@ -185,3 +185,31 @@ export function thump(tipo = 'B1') {
   for (let i = 0; i < d.length; i++) d[i] = (d[i] / (mx || 1)) * (tipo === 'B1' ? 0.9 : 0.75);
   playBuffer(buf);
 }
+
+/* ------------------------------------------------------------------------ */
+/* Sons de Korotkoff esquemáticos                                             */
+/* ------------------------------------------------------------------------ */
+/**
+ * Um batimento auscultado na artéria braquial durante a desinsuflação.
+ * fase 1: batida nítida; 2: batida com sopro curto; 3: batida mais forte e
+ * seca; 4: som abafado. Sintetizado: ensina a sequência, não o timbre real.
+ */
+const KOROT = {
+  1: { burst: { dur: 0.045, f: 95, amp: 0.75, q: 2 }, sopro: 0 },
+  2: { burst: { dur: 0.04, f: 90, amp: 0.6, q: 2 }, sopro: 0.22 },
+  3: { burst: { dur: 0.05, f: 100, amp: 1.0, q: 2.2 }, sopro: 0 },
+  4: { burst: { dur: 0.07, f: 55, amp: 0.55, q: 0.9 }, sopro: 0 },
+};
+export function korotkoff(fase, ganho = 1) {
+  const k = KOROT[fase];
+  if (!k) return;
+  const sr = SR;
+  const buf = newBuffer(Math.ceil(sr * 0.2));
+  const d = buf.getChannelData(0);
+  addBurst(d, sr, 0.005, k.burst);
+  if (k.sopro) addMurmur(d, sr, 0.03, 0.15, 'decrescendo', { f: 220, amp: k.sopro });
+  let mx = 0; for (const v of d) mx = Math.max(mx, Math.abs(v));
+  const alvo = (fase === 4 ? 0.5 : fase === 3 ? 0.95 : 0.8) * ganho;
+  for (let i = 0; i < d.length; i++) d[i] = (d[i] / (mx || 1)) * alvo;
+  playBuffer(buf);
+}
