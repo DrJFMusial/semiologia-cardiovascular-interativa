@@ -1,0 +1,2 @@
+Pasta reservada para as ilustrações revisadas do professor (fase 3).
+Cada imagem incorporada deve ser registrada em docs/CREDITOS_E_LICENCAS.md.

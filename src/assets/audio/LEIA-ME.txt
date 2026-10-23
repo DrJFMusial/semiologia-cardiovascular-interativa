@@ -1,0 +1,3 @@
+Pasta reservada para gravações cardíacas com licença compatível (fase 3).
+Nenhum arquivo é incluído sem procedência e licença registradas em docs/CREDITOS_E_LICENCAS.md.
+Os sons atuais são sintetizados em src/core/audio.js.

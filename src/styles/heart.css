@@ -1,0 +1,33 @@
+/* Coração esquemático (simulador do ciclo e anatomia) */
+.heart-svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.heart-svg .tube, .heart-svg .tube-edge { fill: none; stroke-linecap: butt; stroke-linejoin: round; }
+.heart-svg .tube-edge { stroke: rgba(16, 33, 43, .32); }
+.heart-svg .tube.art { stroke: #cf424b; }
+.heart-svg .tube.ven { stroke: #4069b3; }
+.heart-svg .myo {
+  fill: var(--g-myo); stroke: #9c6656; stroke-width: 1.6; stroke-linejoin: round;
+}
+.heart-svg .myo-v {
+  /* tensão da parede: escurece levemente com a pressão ventricular */
+  --tension: 0;
+  fill: color-mix(in srgb, #e3ad9b calc(100% - var(--tension) * 45%), #b5584a);
+  transition: fill .05s linear;
+}
+.heart-svg .myo-a.contracting { fill: #d9917f; }
+.heart-svg .cav { stroke: rgba(16, 33, 43, .25); stroke-width: 1.2; }
+.heart-svg .cav.art { fill: var(--g-art); }
+.heart-svg .cav.ven { fill: var(--g-ven); }
+.heart-svg .annulus { stroke: #7c4c3f; stroke-width: 4; stroke-linecap: round; fill: none; opacity: .55; }
+.heart-svg .leaflet line {
+  stroke: #fffaf2; stroke-width: 6; stroke-linecap: round;
+}
+.heart-svg .leaflet line.edge { stroke: rgba(16, 33, 43, .5); stroke-width: 8.5; }
+.heart-svg .particle.art { fill: #ffd9d6; }
+.heart-svg .particle.ven { fill: #dfe9ff; }
+.heart-svg .particle { stroke: rgba(16, 33, 43, .35); stroke-width: .8; }
+.heart-svg .hl { font: 600 22px var(--font); fill: #fff; pointer-events: none; letter-spacing: .02em; }
+.heart-svg .hl.small { font: 500 13px var(--font); fill: var(--ink-2); letter-spacing: 0; }
+.heart-svg .hl.valve-l { font: 600 12px var(--font); fill: #fff; opacity: .9; }
+.heart-svg .hl.valve-l.halo { fill: var(--ink); paint-order: stroke; stroke: #fff; stroke-width: 3px; }
+.heart-svg .hl.valve-l.open { fill: #fff3c4; }
+.heart-svg .hl.valve-l.halo.open { fill: var(--petrol); }
