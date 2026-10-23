@@ -16,7 +16,7 @@ import './styles/sections.css';
 import './styles/heart.css';
 import './styles/theme.css';
 
-import { register, mountAll } from './core/registry.js';
+import { register, mountAll, onSlideChange } from './core/registry.js';
 import { buildShell } from './core/shell.js';
 import { cycleLab } from './simulators/cycle/index.js';
 import { anatomy } from './simulators/anatomy/index.js';
@@ -102,7 +102,9 @@ if (modo === 'estudo') {
     plugins: [Notes],
   });
   deck.initialize().then(() => {
+    onSlideChange(deck.getCurrentSlide());
     mountAll(document);
+    deck.on('slidechanged', event => onSlideChange(event.currentSlide));
     buildShell(deck, { modo });
   });
 }
@@ -114,9 +116,18 @@ if (import.meta.env.DEV) {
 function studyDeck() {
   const slides = [...document.querySelectorAll('.reveal .slides > section')];
   slides.forEach((s, i) => { s.id = s.id || `s${i + 1}`; });
-  const go = (i) => slides[i]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const go = (i) => {
+    if (!slides[i]) return;
+    history.replaceState(null, '', `#/` + i);
+    slides[i].scrollIntoView({ behavior: 'instant', block: 'start' });
+  };
   const m = /^#\/?(\d+)/.exec(location.hash);
-  if (m) requestAnimationFrame(() => go(Number(m[1])));
+  // Imagens e fontes alteram a altura das seções anteriores ao destino.
+  const loaded = document.readyState === 'complete' ? Promise.resolve()
+    : new Promise(resolve => window.addEventListener('load', resolve, { once: true }));
+  Promise.all([loaded, document.fonts.ready]).then(() => {
+    if (m) requestAnimationFrame(() => go(Number(m[1])));
+  });
   return {
     getSlides: () => slides,
     slide: go,

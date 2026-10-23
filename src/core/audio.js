@@ -12,6 +12,9 @@ let master = null;
 let volume = 0.8;
 let muted = false;
 const listeners = new Set();
+const players = new Set();
+
+export function stopAllAudio() { [...players].forEach(player => player.stop()); }
 
 export function getContext() {
   if (!ctx) {
@@ -21,7 +24,7 @@ export function getContext() {
     master.gain.value = muted ? 0 : volume;
     master.connect(ctx.destination);
   }
-  if (ctx.state === 'suspended') ctx.resume();
+  if (ctx.state === 'suspended') ctx.resume().catch(() => { /* nova interação pode retomar */ });
   return ctx;
 }
 export function out() { getContext(); return master; }
@@ -170,8 +173,18 @@ export function playBuffer(buf, { loop = false } = {}) {
   const lp = c.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 900;
   src.connect(lp).connect(out());
   const startedAt = c.currentTime + 0.03;
+  let stopped = false;
+  const cleanup = () => { players.delete(player); src.disconnect(); lp.disconnect(); };
+  const player = { src, startedAt, duration: buf.duration, stop: () => {
+    if (stopped) return;
+    stopped = true;
+    try { src.stop(); } catch { /* já terminado */ }
+    cleanup();
+  } };
+  src.onended = cleanup;
+  players.add(player);
   src.start(startedAt);
-  return { src, startedAt, duration: buf.duration, stop: () => { try { src.stop(); } catch { /* já parado */ } } };
+  return player;
 }
 
 /** Batida curta para sincronizar com animações (laboratório do ciclo). */

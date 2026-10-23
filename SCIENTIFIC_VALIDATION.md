@@ -1,5 +1,15 @@
 # Nota de migração v1.0.0
 
+## Adendo de manutenção v1.1.1 — 23/10/2026
+
+Nenhum parâmetro fisiológico ou critério diagnóstico foi alterado nesta manutenção. Foram corrigidas inconsistências de apresentação do estado (grau do edema durante a animação, valvas ao buscar um instante pausado). A revisão de código e os testes não constituem validação clínica integral.
+
+Conferência externa dirigida: [Diretriz Brasileira de Hipertensão Arterial 2025, publicação original](https://www.scielo.br/j/abc/a/BXT7Vk4B9VKQnJFsJhgJ4Hn/?lang=pt), classificação mantida; [AHA, Measurement of Blood Pressure in Humans, 2019](https://www.ahajournals.org/doi/10.1161/HYP.0000000000000087), deflação lenta e identificação auscultatória; [CV Physiology, Reduced Ejection](https://cvphysiology.com/heart-disease/hd002d), fluxo pode continuar com discreta inversão do gradiente por inércia. Portanto, uma inversão isolada ao fim da ejeção não foi classificada como erro científico comprovado. As curvas prescritas continuam sem resolver esse mecanismo.
+
+Clinical Methods, capítulos 19/24/25, permanece referência de PVJ/B3/B4. Nesta rodada, resultados de busca foram acessíveis, mas as páginas integrais do NCBI exigiram verificação do navegador; não se alegou nova leitura integral. Fontes locais e limitações anteriores estão discriminadas abaixo.
+
+PVJ: desenho e adição convencional de 5 cm ao ângulo esternal são aproximações; não modelam variação anatômica individual. Focos: posições e lateralidade foram inspecionadas no código/desenho; a alternativa de teclado reutiliza exatamente as coordenadas e o avaliador do tórax. Sons continuam sintéticos, úteis para cronologia, sem validação de timbre clínico. Revisão docente e teste em dispositivos reais permanecem necessários.
+
 O texto abaixo documenta a revisão dirigida realizada na v0.2.1 e suas limitações, preservadas nesta migração. Os novos módulos do anexo v1.0.0 foram importados e submetidos a testes funcionais; não se afirma revisão científica integral independente de PA, PVJ, edema ou demais conteúdos novos. Imagens: autoria e revisão declaradas pelo professor no anexo. Todos os áudios continuam sintéticos.
 
 # Validação científica — escopo e limitações

@@ -58,7 +58,13 @@ export function sopro(node) {
       const b = button({ label: `${rotulo}: ${lab}`, text: lab, cls: 'chip' });
       b.setAttribute('role', 'radio');
       b.dataset.v = val;
-      b.addEventListener('click', () => { st[chave] = chave === 'grau' ? Number(val) : val; if (chave === 'fase') st.momento = MOMENTO[val][0][0]; montar(); });
+      b.addEventListener('click', () => {
+        const label = b.getAttribute('aria-label');
+        st[chave] = chave === 'grau' ? Number(val) : val;
+        if (chave === 'fase') st.momento = MOMENTO[val][0][0];
+        montar();
+        [...form.querySelectorAll('button')].find(x => x.getAttribute('aria-label') === label)?.focus({ preventScroll: true });
+      });
       box.appendChild(b);
     });
     return g;

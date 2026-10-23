@@ -14,7 +14,7 @@ Aplicação educacional estática (HTML5, CSS, JavaScript) para a aula de semiol
 - **Modo apresentação**: tela 16:9 (1600 × 900) escalada sem corte para qualquer projetor, navegação por setas, notas do apresentador.
 - **Modo estudo**: documento rolável e responsivo para computador e celular, com os mesmos simuladores e textos complementares.
 
-Versão atual: **1.1.0, com tema claro/escuro opcional (29 telas, cerca de 50 min)**. Não há back-end, login nem coleta de dados.
+Versão proposta: **1.1.1, em revisão (29 telas, cerca de 50 min)**. A produção permanece na **1.1.0** até aprovação. Não há back-end, login nem coleta de dados. Veja [auditoria de manutenção](docs/AUDITORIA_v1.1.1.md), [changelog](CHANGELOG.md) e [roadmap](ROADMAP.md).
 
 ## Requisitos
 

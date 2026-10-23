@@ -6,8 +6,24 @@
  *   deactivate() slide saiu de cena (pausar animações, parar áudio)
  *   pause()      pausa global solicitada pela barra
  */
+import { stopAllAudio } from './audio.js';
 const factories = new Map();
 const instances = [];
+let currentSlide = null;
+let presentation = false;
+let owner = null;
+
+function setActive(entry, active) {
+  if (entry.active === active) return;
+  entry.active = active;
+  if (active) entry.inst.activate?.();
+  else entry.inst.deactivate?.();
+}
+
+function refresh(entry) {
+  setActive(entry, !document.hidden && (presentation
+    ? !!currentSlide?.contains(entry.node) : entry.visible));
+}
 
 export function register(name, factory) { factories.set(name, factory); }
 
@@ -17,8 +33,13 @@ export function mountAll(root = document) {
     const f = factories.get(node.dataset.component);
     if (!f) { console.warn('Componente não registrado:', node.dataset.component); return; }
     const inst = f(node, { ...node.dataset }) || {};
+    node.addEventListener('keydown', event => {
+      if (event.target.closest?.('button, input, select, textarea, [role="button"], [role="radio"]')) event.stopPropagation();
+    });
     node.__mounted = inst;
-    instances.push({ node, inst });
+    const entry = { node, inst, active: undefined, visible: false };
+    instances.push(entry);
+    refresh(entry);
     io.observe(node);
   });
 }
@@ -27,18 +48,41 @@ export function mountAll(root = document) {
    visível) e no modo estudo (rolagem contínua). */
 const io = new IntersectionObserver((entries) => {
   for (const e of entries) {
-    const inst = e.target.__mounted;
-    if (!inst) continue;
-    if (e.isIntersecting && e.intersectionRatio > 0.25) inst.activate?.();
-    else inst.deactivate?.();
+    const entry = instances.find(x => x.node === e.target);
+    if (!entry) continue;
+    // Um simulador alto pode ocupar menos de 25% da sua própria área na tela.
+    entry.visible = e.isIntersecting && e.intersectionRect.height > 0 && e.intersectionRect.width > 0;
+    refresh(entry);
   }
-}, { threshold: [0, 0.25, 0.6] });
+}, { threshold: [0] });
 
 export function onSlideChange(current) {
-  for (const { node, inst } of instances) {
-    const inside = current && current.contains(node);
-    if (inside) inst.activate?.(); else inst.deactivate?.();
-  }
+  presentation = true;
+  currentSlide = current;
+  instances.forEach(refresh);
 }
 
-export function pauseAll() { instances.forEach(({ inst }) => inst.pause?.()); }
+export function pauseAll() {
+  instances.forEach(({ inst }) => inst.pause?.());
+  stopAllAudio();
+}
+
+// Um único componente conduz a reprodução, inclusive no documento de estudo.
+function claimInteraction(event) {
+  const node = event.target.closest?.('[data-component]');
+  if (!node || node === owner) return;
+  instances.forEach(entry => { if (entry.node !== node) entry.inst.pause?.(); });
+  stopAllAudio();
+  owner = node;
+}
+document.addEventListener('click', claimInteraction, true);
+document.addEventListener('keydown', claimInteraction, true);
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) pauseAll();
+  instances.forEach(refresh);
+});
+window.addEventListener('pagehide', () => {
+  pauseAll();
+  instances.forEach(entry => setActive(entry, false));
+});
+window.addEventListener('pageshow', () => instances.forEach(refresh));

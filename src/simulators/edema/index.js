@@ -44,6 +44,11 @@ export function edema(node) {
   const SURF = 120;     // superfície da pele (px)
   const MM = 7;         // px por mm (desenho ampliado)
   const read = node.querySelector('.ed-read');
+  function reset() {
+    cancelAnimationFrame(raf); fase = 'livre'; depth = 0;
+    setThumb(-160); shape(0);
+    read.textContent = `Grau ${grau}+: ${GRAUS[grau].txt}.`;
+  }
 
   function shape(dp) {
     const y = SURF, w = 46 + dp * 1.5;
@@ -82,7 +87,7 @@ export function edema(node) {
 
   const gb = [1, 2, 3, 4].map((n) => {
     const b = button({ label: `Grau ${n}+`, text: `${n}+`, cls: 'seg', pressed: n === grau });
-    b.addEventListener('click', () => { grau = n; gb.forEach((x, i) => x.setAttribute('aria-pressed', String(i + 1 === grau))); read.textContent = `Grau ${n}+: ${GRAUS[n].txt}.`; });
+    b.addEventListener('click', () => { grau = n; reset(); gb.forEach((x, i) => x.setAttribute('aria-pressed', String(i + 1 === grau))); });
     node.querySelector('.ed-graus').appendChild(b);
     return b;
   });
@@ -91,5 +96,5 @@ export function edema(node) {
   node.querySelector('.ed-act').appendChild(bp);
   setThumb(-160); shape(0);
   read.textContent = `Grau ${grau}+: ${GRAUS[grau].txt}.`;
-  return { deactivate() { cancelAnimationFrame(raf); setThumb(-160); shape(0); }, pause() { cancelAnimationFrame(raf); } };
+  return { deactivate: reset, pause() { cancelAnimationFrame(raf); } };
 }

@@ -179,7 +179,7 @@ export function focos(node) {
   function explorar() {
     mode = 'explorar';
     svg.classList.remove('exercise'); pin.style.display = 'none';
-    Object.values(marks).forEach((g) => g.classList.remove('sel', 'hidden'));
+    Object.values(marks).forEach((g) => { g.classList.remove('sel', 'hidden'); g.setAttribute('tabindex', '0'); });
     body.innerHTML = '<p class="fo-hint">Clique em um foco para ver localização e finalidade.</p><ol class="fo-list">' +
       FOCOS.map((f) => `<li><button type="button" class="link" data-f="${f.id}"><b style="color:${f.cor}">${f.id}</b> ${f.nome}</button></li>`).join('') + '</ol>';
     body.querySelectorAll('[data-f]').forEach((b) => b.addEventListener('click', () => showFocus(b.dataset.f)));
@@ -191,12 +191,18 @@ export function focos(node) {
     body.innerHTML = `
       <p class="fo-kicker">Exercício · ${5 - ordem.length}/5</p>
       <h4>Onde você colocaria o estetoscópio para o <span style="color:${alvo.cor}">${alvo.nome.toLowerCase()}</span>?</h4>
-      <p class="fo-hint">Clique no tórax. Pense primeiro: qual lado, qual espaço intercostal, qual linha?</p>`;
+      <p class="fo-hint">Clique no tórax ou escolha uma localização abaixo com o teclado. Qual lado, espaço intercostal e linha?</p>
+      <div class="fo-locations" role="group" aria-label="Responder pela localização">${FOCOS.map(f => `<button type="button" class="link" data-location="${f.id}">${f.local}</button>`).join('')}</div>`;
+    body.querySelectorAll('[data-location]').forEach(b => b.addEventListener('click', () => {
+      const f = FOCOS.find(f => f.id === b.dataset.location);
+      answerPoint({ x: f.x, y: f.y, px: X(f.x), py: Y(f.y) });
+      body.querySelector('.fo-next')?.focus({ preventScroll: true });
+    }));
   }
   function exercicio() {
     mode = 'exercicio'; acertos = 0; ordem = [];
     svg.classList.add('exercise');
-    Object.values(marks).forEach((g) => g.classList.add('hidden'));
+    Object.values(marks).forEach((g) => { g.classList.add('hidden'); g.setAttribute('tabindex', '-1'); });
     novaRodada();
   }
 
@@ -211,8 +217,10 @@ export function focos(node) {
       if (g) showFocus(g.dataset.id);
       return;
     }
+    answerPoint(toCm(ev));
+  });
+  function answerPoint(p) {
     if (!alvo || body.querySelector('.fo-next')) return;
-    const p = toCm(ev);
     pin.setAttribute('transform', `translate(${p.px} ${p.py})`);
     pin.style.display = '';
     const d = Math.hypot(p.x - alvo.x, p.y - alvo.y);
@@ -238,12 +246,13 @@ export function focos(node) {
       marks[alvo.id].classList.remove('sel', 'reveal');
       if (ordem.length) novaRodada();
       else {
+        alvo = null;
         body.innerHTML = `<p class="fo-kicker">Resultado</p><h4>${acertos} de 5 focos</h4>
           <p>Revise os que errou no modo Explorar. Lembre a sequência: base do coração no 2º espaço, dos dois lados do esterno; aórtico acessório um espaço abaixo à esquerda; tricúspide junto ao xifoide; mitral no ictus.</p>`;
         Object.values(marks).forEach((g) => g.classList.remove('hidden'));
       }
     });
-  });
+  }
   svg.querySelectorAll('.focus').forEach((g) => g.addEventListener('keydown', (e) => {
     if ((e.key === 'Enter' || e.key === ' ') && mode === 'explorar') { showFocus(g.dataset.id); e.preventDefault(); e.stopPropagation(); }
   }));

@@ -59,7 +59,7 @@ export function cycleLab(node) {
   let active = false;
 
   const plots = createPlots(node.querySelector('.cl-plots'), {
-    onSeek: (tt) => { pause(); t = tt; render(0.05); },
+    onSeek: (tt) => { pause(); t = tt; heart.reset(); render(0); },
     onPhase: (id) => goPhase(id),
   });
 
@@ -166,7 +166,13 @@ export function cycleLab(node) {
   }
   function play() {
     if (playing) return;
-    if (prefersReducedMotion() && speed > 0.25) speed = 0.25;
+    if (prefersReducedMotion() && speed > 0.25) {
+      speed = 0.25;
+      spBtns.forEach((b, i) => {
+        b.setAttribute('aria-pressed', String(SPEEDS[i].v === speed));
+        b.setAttribute('aria-checked', String(SPEEDS[i].v === speed));
+      });
+    }
     playing = true; last = null;
     setIcon(bPlay, 'pause'); bPlay.setAttribute('aria-label', 'Pausar (espaço)'); bPlay.title = 'Pausar (espaço)';
     node.classList.add('playing');
@@ -216,7 +222,7 @@ export function cycleLab(node) {
     if (e.key === ' ' || e.key === 'k') { playing ? pause() : play(); return true; }
     if (e.key === 'ArrowRight') { e.shiftKey ? frameStep(1) : step(1); return true; }
     if (e.key === 'ArrowLeft') { e.shiftKey ? frameStep(-1) : step(-1); return true; }
-    if (e.key === 'Home') { pause(); t = 0; render(0.05); return true; }
+    if (e.key === 'Home') { pause(); t = 0; heart.reset(); render(0); return true; }
     return false;
   });
 

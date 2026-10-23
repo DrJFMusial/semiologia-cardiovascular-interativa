@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import { viteSingleFile } from 'vite-plugin-singlefile';
+import { readFileSync } from 'node:fs';
 
 // Dois alvos de build:
 //  npm run build          -> dist/          site estático para o GitHub Pages
@@ -11,7 +12,12 @@ export default defineConfig(({ mode }) => {
   const offline = mode === 'offline';
   return {
     base: './',
-    plugins: offline ? [viteSingleFile({ removeViteModuleLoader: true })] : [],
+    publicDir: offline ? false : 'public',
+    plugins: offline ? [
+      { name: 'offline-favicon', transformIndexHtml: html => html.replace('./favicon.svg',
+        `data:image/svg+xml,${encodeURIComponent(readFileSync(new URL('./public/favicon.svg', import.meta.url), 'utf8'))}`) },
+      viteSingleFile({ removeViteModuleLoader: true }),
+    ] : [],
     build: {
       outDir: offline ? 'dist-offline' : 'dist',
       assetsInlineLimit: offline ? 100000000 : 0,
