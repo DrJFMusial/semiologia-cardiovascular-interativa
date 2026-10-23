@@ -20,10 +20,14 @@ As curvas de pressão são qualitativas e não constituem um modelo hemodinâmic
 
 ## Publicação
 
-Destino preparado: repositório público `DrJFMusial/semiologia-cardiovascular-interativa`, com o conteúdo do código-fonte na raiz e Pages gerado pelo workflow existente. PDFs, livros, áudio sem licença, caches e backups não integram o envio proposto.
+Repositório público: https://github.com/DrJFMusial/semiologia-cardiovascular-interativa
 
-O formulário de criação foi preenchido, mas a revisão automática de aprovação rejeitou o envio por considerar insuficientemente explícita a autorização para tornar fontes e histórico públicos. Foi solicitada confirmação específica. Até essa confirmação e a execução verificada das etapas remotas, não há repositório criado nem endereço público confirmado. A entrega local está disponível independentemente dessa etapa.
+Aplicação publicada: https://drjfmusial.github.io/semiologia-cardiovascular-interativa/
+
+O código-fonte está na raiz; Pages distribui apenas o resultado do build em `dist/`. PDFs, livros, áudio sem licença e caches não foram enviados. Um bundle contendo exclusivamente o histórico dos fontes foi incluído para recuperação.
+
+A autorização explícita para criação pública, envio de fontes/histórico e publicação foi recebida em 23/10/2026. O primeiro workflow remoto, execução `39899102889`, concluiu com sucesso instalação, sete testes, build e deploy. O site foi aberto no navegador; avanço até 420 ms confirmou o estado de relaxamento isovolumétrico. Evidências locais incluem captura e relatório de recursos HTTP.
 
 ## Recuperação
 
-`referencia-original-v0.2.0.zip` preserva a versão recebida. O bundle permite restaurar fontes e histórico: `git clone historico-e2m08.bundle projeto-restaurado`. As tags v0.2.0 e v0.2.1 identificam as referências de código; um commit posterior consolida estas notas de entrega. Nenhum histórico anterior foi reescrito.
+No pacote local, `referencia-original-v0.2.0.zip` preserva a versão recebida, e `git clone historico-e2m08.bundle projeto-restaurado` recupera o histórico local original. No GitHub, `docs/history/historico-e2m08-original.bundle` contém os mesmos commits e tags originais. A importação pelo conector gerou commits remotos próprios, documentados em `docs/history/README.md`. A tag pública `v0.2.1` aponta para o snapshot importado; a referência original está em `baseline/v0.2.0`. Nenhum histórico anterior foi reescrito.

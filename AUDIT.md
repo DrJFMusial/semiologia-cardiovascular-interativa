@@ -55,12 +55,12 @@ Progressão capa → roteiro → caso → anatomia → ciclo → focos → sons 
 - Chrome headless real: três resoluções, modos, avanço/recuo, Shift + setas, play/pause/reset, valvas em B2, áudio Web Audio ativo e buffer não silencioso, abertura `file://` offline com nove slides.
 - Nenhum erro JavaScript ou HTTP ≥400 observado no roteiro executado; isso não cobre todos os caminhos da UI.
 - Gravações de evidência em `../auditoria/`: screenshots, logs, JSON de navegador e auditorias npm. Qualidade de timbre e fidelidade fisiológica não são validadas por buffer/screenshot.
-- Não verificados: escuta humana, Firefox/Safari, dispositivo móvel físico, projetor, lector de tela, Pages público e workflow remoto.
+- Não verificados: escuta humana, Firefox/Safari, dispositivo móvel físico, projetor e leitor de tela. Pages e workflow remoto foram verificados na etapa de publicação posterior descrita abaixo.
 
 ## GitHub
 
-Consulta somente leitura pelo plugin retornou três repositórios acessíveis, nenhum destinado inequivocamente a E2M08. Destino proposto: `DrJFMusial/semiologia-cardiovascular-interativa`, ainda não criado. Não foram enviados arquivos, criados repositórios, branches remotas, PRs ou deploys.
+Após autorização explícita do professor em 23/10/2026, foi criado o repositório público `DrJFMusial/semiologia-cardiovascular-interativa`. Fontes foram importados pelo plugin GitHub; o envio Git nativo não possuía autenticação utilizável. Branches remotas `baseline/v0.2.0` e `iteration/v0.2.1` preservam os snapshots. O histórico local completo foi incluído em `docs/history/historico-e2m08-original.bundle`.
 
-Histórico Git local criado com identidade técnica `Codex <codex@local.invalid>`, sem atribuir novos commits ao professor: `main`/tag `v0.2.0` guardam os fontes recebidos; `iteration/v0.2.1` guarda a evolução e será marcada com `v0.2.1`. Sem remote configurado. O ZIP original preserva também os compilados recebidos.
+O histórico local original usa identidade técnica `Codex <codex@local.invalid>` e permanece íntegro no bundle com as tags locais v0.2.0 e v0.2.1. Os commits remotos são snapshots importados, com identificadores diferentes e autoria de conta atribuída automaticamente pelo conector. `docs/history/README.md` registra essa distinção. O ZIP original preserva também os compilados recebidos.
 
-Estrutura remota proposta: conteúdo de `app/` na raiz; documentos, fontes, lockfile, testes, licenças e `.github/workflows/deploy.yml`. Excluir livros, PDFs, backups, caches, node_modules e dist do Git. Pages receberá somente `dist/` como artifact. Antes de qualquer envio, o professor aprova nome, visibilidade e criação/envio/configuração de Pages. Depois do deploy, confirmar URL pública e recursos; nunca usar build local como prova de publicação.
+Estrutura remota: fontes, documentos, lockfile, testes, licenças e workflow na raiz. Livros, PDFs, caches, node_modules e builds não estão no Git; Pages recebe apenas `dist/` como artifact. Source configurado para GitHub Actions, HTTPS obrigatório. Execução inicial `39899102889` concluída com sucesso. Site aberto e controles de quadro verificados em https://drjfmusial.github.io/semiologia-cardiovascular-interativa/ . Acesso público não elimina as limitações científicas registradas.

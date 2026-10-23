@@ -3,6 +3,10 @@
 E2M08 · Introdução à Propedêutica Médica · Semestre 2026/2
 Prof. João Frederico Musial · Medicina · Centro Universitário Campo Real
 
+**Acesse a aplicação:** https://drjfmusial.github.io/semiologia-cardiovascular-interativa/
+
+[Release v0.2.1](https://github.com/DrJFMusial/semiologia-cardiovascular-interativa/releases/tag/v0.2.1)
+
 Aplicação educacional estática (HTML5, CSS, JavaScript) para a aula de semiologia cardiovascular. Um único código serve a dois usos:
 
 - **Modo apresentação**: tela 16:9 (1600 × 900) escalada sem corte para qualquer projetor, navegação por setas, notas do apresentador.
@@ -87,7 +91,7 @@ O núcleo (`src/core`, estilos e simuladores) é independente do conteúdo. Uma 
 
 ## Publicação no GitHub Pages
 
-**Nada é publicado automaticamente.** A publicação depende de aprovação do professor. Instruções completas em [`docs/PUBLICACAO_GITHUB_PAGES.md`](docs/PUBLICACAO_GITHUB_PAGES.md).
+Publicação inicial autorizada pelo professor e confirmada em 23/10/2026. Pages usa GitHub Actions; cada envio a `main` executa `npm ci`, `npm test` e build antes do deploy. Instruções de configuração em [`docs/PUBLICACAO_GITHUB_PAGES.md`](docs/PUBLICACAO_GITHUB_PAGES.md).
 
 ## Dependências
 
@@ -103,4 +107,4 @@ Fontes: Inter e IBM Plex Mono, SIL Open Font License 1.1, incluídas em `src/ass
 
 [AUDIT.md](AUDIT.md) reúne diagnóstico, problemas e verificações; [SCIENTIFIC_VALIDATION.md](SCIENTIFIC_VALIDATION.md) separa evidência de simplificação e limitações. [ARCHITECTURE.md](ARCHITECTURE.md), [CHANGELOG.md](CHANGELOG.md) e [ROADMAP.md](ROADMAP.md) orientam a manutenção.
 
-As pressões são curvas qualitativas, não um solver hemodinâmico causal. Gravações clínicas autênticas e novos simuladores permanecem pendentes. Os sons existentes são síntese esquemática. Publicação ainda não realizada.
+As pressões são curvas qualitativas, não um solver hemodinâmico causal. Gravações clínicas autênticas e novos simuladores permanecem pendentes. Os sons existentes são síntese esquemática. A publicação não constitui validação científica integral. O histórico original e a correspondência das importações estão em [docs/history/README.md](docs/history/README.md).
