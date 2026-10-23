@@ -21,6 +21,7 @@ export function drawWave(canvas, buf, { ciclos, cicloSeg, caso, progress = -1, s
   g.clearRect(0, 0, w, h);
   const css = getComputedStyle(canvas);
   const c = (v, d) => css.getPropertyValue(v).trim() || d;
+  const resolveColor = (value) => value.startsWith('var(') ? c(value.slice(4, -1), '#c98a12') : value;
   const total = ciclos * cicloSeg;
   const x = (t) => (t / total) * w;
   const top = 26, mid = top + (h - top - 22) / 2, amp = (h - top - 22) / 2 - 4;
@@ -47,9 +48,9 @@ export function drawWave(canvas, buf, { ciclos, cicloSeg, caso, progress = -1, s
       let tipo = ev.tipo;
       if (cs.alterna && tipo === 'A2' && !insp) tipo = 'B2';
       const xx = x(b + ev.t * k);
-      g.strokeStyle = COR[tipo]; g.lineWidth = 1.5; g.setLineDash([3, 3]);
+      g.strokeStyle = resolveColor(COR[tipo]); g.lineWidth = 1.5; g.setLineDash([3, 3]);
       g.beginPath(); g.moveTo(xx, top - 2); g.lineTo(xx, h - 22); g.stroke(); g.setLineDash([]);
-      g.fillStyle = COR[tipo]; g.font = '700 12px Inter Variable, sans-serif';
+      g.fillStyle = resolveColor(COR[tipo]); g.font = '700 12px Inter Variable, sans-serif';
       g.fillText(tipo, xx + (tipo === 'P2' ? 9 : 0), 15);
     }
     if (cs.sopro) {
@@ -198,6 +199,7 @@ export function ausculta(node) {
     return false;
   });
   new ResizeObserver(() => buf && drawWave(canvas, buf, meta)).observe(canvas);
+  document.addEventListener('themechange', () => buf && drawWave(canvas, buf, meta));
 
   // os buffers são criados sem AudioContext; o contexto só nasce no primeiro clique
   select('normal');

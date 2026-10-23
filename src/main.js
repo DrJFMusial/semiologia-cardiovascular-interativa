@@ -14,6 +14,7 @@ import './styles/slides.css';
 import './styles/components.css';
 import './styles/sections.css';
 import './styles/heart.css';
+import './styles/theme.css';
 
 import { register, mountAll } from './core/registry.js';
 import { buildShell } from './core/shell.js';

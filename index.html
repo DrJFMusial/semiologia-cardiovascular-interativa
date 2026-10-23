@@ -3,6 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    (() => {
+      let theme = 'light';
+      try { if (localStorage.getItem('e2m08-theme') === 'dark') theme = 'dark'; } catch {}
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+    })();
+  </script>
   <title>Semiologia Cardiovascular | E2M08 2026/2</title>
   <meta name="description" content="Aula interativa de semiotécnica do exame cardiovascular. Prof. João Frederico Musial, Medicina, Centro Universitário Campo Real." />
   <meta name="author" content="Prof. João Frederico Musial" />

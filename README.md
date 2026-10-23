@@ -5,6 +5,8 @@ Prof. João Frederico Musial · Medicina · Centro Universitário Campo Real
 
 Aplicação: https://drjfmusial.github.io/semiologia-cardiovascular-interativa/
 
+**Tema claro/escuro:** use o botão **Tema** (lua) na barra da aula. Sua preferência é salva no navegador. Detalhes em [THEMES.md](THEMES.md).
+
 Migração do anexo v1.0.0 com preservação das correções técnicas e da descrição de B4 da v0.2.1. Veja [MIGRATION_v1.0.0.md](MIGRATION_v1.0.0.md).
 
 Aplicação educacional estática (HTML5, CSS, JavaScript) para a aula de semiologia cardiovascular. Um único código serve a dois usos:
@@ -12,7 +14,7 @@ Aplicação educacional estática (HTML5, CSS, JavaScript) para a aula de semiol
 - **Modo apresentação**: tela 16:9 (1600 × 900) escalada sem corte para qualquer projetor, navegação por setas, notas do apresentador.
 - **Modo estudo**: documento rolável e responsivo para computador e celular, com os mesmos simuladores e textos complementares.
 
-Versão atual: **1.0.0, versão final da aula (29 telas, cerca de 50 min)**. Não há back-end, login nem coleta de dados.
+Versão atual: **1.1.0, com tema claro/escuro opcional (29 telas, cerca de 50 min)**. Não há back-end, login nem coleta de dados.
 
 ## Requisitos
 

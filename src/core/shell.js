@@ -5,6 +5,7 @@
 import { button, ICON } from './ui.js';
 import { setVolume, setMuted, audioState, onAudioChange } from './audio.js';
 import { pauseAll } from './registry.js';
+import { toggleTheme } from './theme.js';
 
 export function buildShell(deck, { modo }) {
   const bar = document.createElement('nav');
@@ -25,6 +26,15 @@ export function buildShell(deck, { modo }) {
     text: modo === 'estudo' ? 'Apresentação' : 'Estudo',
   });
   const bPause = button({ icon: 'pauseAll', label: 'Pausar todas as animações e sons (X)' });
+  const bTheme = button({ icon: 'theme', label: 'Tema escuro', text: 'Tema', pressed: document.documentElement.dataset.theme === 'dark' });
+  bTheme.addEventListener('keydown', (e) => {
+    if (e.key === ' ' || e.key === 'Enter') e.stopPropagation();
+  });
+  bTheme.addEventListener('click', () => {
+    const dark = toggleTheme() === 'dark';
+    bTheme.setAttribute('aria-pressed', String(dark));
+    bTheme.title = dark ? 'Tema escuro ativo. Mudar para claro' : 'Mudar para tema escuro';
+  });
   const bMotion = button({ icon: 'motion', label: 'Reduzir movimento', pressed: document.documentElement.classList.contains('reduce-motion') });
   const vol = document.createElement('div');
   vol.className = 'ab-vol';
@@ -34,7 +44,7 @@ export function buildShell(deck, { modo }) {
   const range = vol.querySelector('input');
   const bNotes = button({ icon: 'notes', label: 'Notas do apresentador (S)' });
   const bFull = button({ icon: 'full', label: 'Tela cheia (F)' });
-  right.append(bMenu, bHome, bModo, bPause, bMotion, vol);
+  right.append(bMenu, bHome, bModo, bTheme, bPause, bMotion, vol);
   if (modo !== 'estudo') right.append(bNotes);
   right.append(bFull);
   document.body.appendChild(bar);

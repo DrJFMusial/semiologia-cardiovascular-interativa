@@ -90,6 +90,9 @@ export function escuta(node) {
     setIcon(bPlay, 'pause'); bPlay.querySelector('span').textContent = 'Parar';
   });
   bNext.addEventListener('click', nova);
+  document.addEventListener('themechange', () => {
+    if (respondido) drawWave(canvas, buf, { ciclos: 4, cicloSeg: 0.9, caso: CASOS[atual] });
+  });
   nova();
   return { deactivate: stop, pause: stop };
 }

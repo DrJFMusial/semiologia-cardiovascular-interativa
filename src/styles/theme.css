@@ -1,0 +1,78 @@
+/* Tema escuro opcional. Imagens clínicas mantêm suas cores originais. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #101b24;
+  --paper-2: #1b2b37;
+  --line: #354958;
+  --line-2: #526a7b;
+  --ink: #edf4f8;
+  --ink-2: #cad8e2;
+  --ink-3: #a5b9c8;
+  --petrol: #83d4df;
+  --petrol-2: #a4e5ed;
+  --petrol-soft: #233e49;
+  --slate: #b2c8da;
+  --art: #ff8b95;
+  --art-soft: #482b35;
+  --ven: #92b9ff;
+  --ven-soft: #283b59;
+  --sound: #f2c266;
+  --sound-soft: #443821;
+  --ok: #8bd4af;
+  --ok-soft: #213f35;
+  --warn: #ffc28e;
+  --warn-soft: #483528;
+  --ph-atrial: #29444d;
+  --ph-ivc: #335965;
+  --ph-ejecao: #276273;
+  --ph-ivr: #514767;
+  --ph-rapido: #403951;
+  --ph-diastase: #302e40;
+  --shadow: 0 4px 24px rgb(0 0 0 / 25%);
+}
+[data-theme="dark"] body { color: var(--ink); }
+[data-theme="dark"] .btn,
+[data-theme="dark"] .sm-inner,
+[data-theme="dark"] .au-wave,
+[data-theme="dark"] .qe-opt,
+[data-theme="dark"] .qe-wave.show,
+[data-theme="dark"] .sy-svg,
+[data-theme="dark"] .so-svg,
+[data-theme="dark"] .so-txt,
+[data-theme="dark"] .rg-sheet,
+[data-theme="dark"] body.modo-estudo .reveal .slides > section { background: var(--paper); }
+[data-theme="dark"] .appbar { background: rgb(16 27 36 / 94%); opacity: .85; }
+[data-theme="dark"] .appbar:hover,
+[data-theme="dark"] .appbar:focus-within { opacity: 1; }
+[data-theme="dark"] .btn.primary { background: var(--petrol); color: var(--paper); }
+[data-theme="dark"] .btn.primary:hover { background: var(--petrol-2); color: var(--paper); }
+[data-theme="dark"] .btn.seg[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+[data-theme="dark"] .btn.chip[aria-pressed="true"] { background: var(--petrol-soft); }
+[data-theme="dark"] .btn.chip.som[aria-pressed="true"] { background: var(--sound-soft); color: var(--sound); }
+[data-theme="dark"] .sections-menu { background: rgb(0 0 0 / 60%); }
+[data-theme="dark"] .plots-svg .strip-bg,
+[data-theme="dark"] .ko-face,
+[data-theme="dark"] .ed-bg { fill: var(--paper); }
+[data-theme="dark"] .plots-svg .vmark-label { stroke: var(--paper); }
+[data-theme="dark"] .plots-svg .phase-band,
+[data-theme="dark"] .plots-svg .dot { stroke: var(--paper); }
+[data-theme="dark"] .plots-svg .phase-band.active { stroke: var(--ink); }
+[data-theme="dark"] .plots-svg .sound-label.extra { fill: var(--sound); }
+[data-theme="dark"] .eg-svg { background: #261f29; }
+[data-theme="dark"] .eg-grid line.small { stroke: #593744; }
+[data-theme="dark"] .eg-grid line.big { stroke: #925564; }
+[data-theme="dark"] .eg-dimt { stroke: #261f29; }
+[data-theme="dark"] .sx.fis h3 { color: #c5b0f5 !important; }
+[data-theme="dark"] .desd .tt.p { fill: #c5b0f5; }
+[data-theme="dark"] .esforco { background: linear-gradient(90deg, #234236, #514121, #5c3530, #6d333a); }
+[data-theme="dark"] .caso-path span,
+[data-theme="dark"] .hs-dot,
+[data-theme="dark"] .hs-item span,
+[data-theme="dark"] .so-l span { color: var(--paper); }
+[data-theme="dark"] .heart-svg .hl.valve-l.halo { fill: #10212b; }
+/* Figuras anatômicas de pele/osso preservam as cores; os textos externos seguem o tema. */
+[data-theme="dark"] .pu-pt .halo { fill: var(--paper); }
+@media (max-width: 420px) {
+  .ab-brand { display: none; }
+  body.modo-estudo .appbar { justify-content: center; padding-inline: 6px; }
+}
