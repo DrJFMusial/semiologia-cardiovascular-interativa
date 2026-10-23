@@ -19,6 +19,14 @@
 
 export const T = 0.8; // s
 
+/** Normaliza ciclos com precisão de 1 ps para estabilizar limites de fase. */
+export function normalizeTime(t) {
+  if (!Number.isFinite(t)) throw new TypeError('Tempo deve ser finito');
+  const wrapped = t >= 0 && t < T ? t : ((t % T) + T) % T;
+  const rounded = Math.round(wrapped * 1e12) / 1e12;
+  return rounded >= T ? 0 : rounded;
+}
+
 /** Fases mecânicas, contíguas, cobrindo [0, T). */
 export const PHASES = [
   {
@@ -195,16 +203,20 @@ export const series = {
 };
 
 export function phaseAt(t) {
-  const x = ((t % T) + T) % T;
+  const x = normalizeTime(t);
   return PHASES.find((p) => x >= p.t0 && x < p.t1) || PHASES[PHASES.length - 1];
 }
 
 /** Estado instantâneo coerente. */
 export function stateAt(t) {
-  const x = ((t % T) + T) % T;
+  const x = normalizeTime(t);
   const ph = phaseAt(x);
   const vol = VOL(x);
-  const dv = (VOL(Math.min(x + 0.004, T)) - VOL(Math.max(x - 0.004, 0))) / 0.008; // mL/s
+  // Diferença finita limitada à fase: não mistura enchimento/ejeção com
+  // uma fase isovolumétrica nas bordas. Fluxo derivado é aproximado.
+  const lo = Math.max(x - 0.00001, ph.t0);
+  const hi = Math.min(x + 0.00001, ph.t1);
+  const dv = ph.id === 'ivc' || ph.id === 'ivr' ? 0 : (VOL(hi) - VOL(lo)) / (hi - lo);
   return {
     t: x, phase: ph,
     vol, dv,

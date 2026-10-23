@@ -8,6 +8,7 @@
 import { CASOS, renderCaso, playBuffer } from '../../core/audio.js';
 import { drawWave } from '../ausculta/index.js';
 import { button, setIcon } from '../../core/ui.js';
+import { evaluateAnswer } from './answer.js';
 
 const IDS = ['normal', 'desdobramento', 'b3', 'b4', 'sistolico', 'diastolico'];
 
@@ -66,7 +67,7 @@ export function escuta(node) {
   function responder(id, b) {
     if (respondido) return;
     respondido = true;
-    const ok = id === atual;
+    const ok = evaluateAnswer(atual, id).correct;
     if (ok) acertos++;
     opts.querySelectorAll('.qe-opt').forEach((x) => {
       x.disabled = true;

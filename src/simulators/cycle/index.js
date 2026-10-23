@@ -8,6 +8,7 @@ import { createHeart } from './heart.js';
 import { createPlots } from './plots.js';
 import { button, setIcon, captureKeys, prefersReducedMotion } from '../../core/ui.js';
 import { thump } from '../../core/audio.js';
+import { advanceFrame } from './transport.js';
 
 const SPEEDS = [
   { v: 0.1, l: '0,1×' }, { v: 0.25, l: '0,25×' }, { v: 0.5, l: '0,5×' }, { v: 1, l: '1×' },
@@ -17,7 +18,7 @@ export function cycleLab(node) {
   node.classList.add('cycle-lab');
   node.tabIndex = 0;
   node.setAttribute('role', 'application');
-  node.setAttribute('aria-label', 'Laboratório do ciclo cardíaco. Espaço: reproduzir ou pausar. Setas: fase anterior ou seguinte.');
+  node.setAttribute('aria-label', 'Laboratório do ciclo cardíaco. Espaço: reproduzir ou pausar. Setas: fase anterior ou seguinte. Shift e setas: quadro anterior ou seguinte de 10 ms.');
   node.innerHTML = `
     <div class="cl-left">
       <div class="cl-phase" aria-live="polite">
@@ -37,13 +38,15 @@ export function cycleLab(node) {
     </div>
     <div class="cl-right">
       <div class="cl-plots"></div>
+      <p class="cl-model-note estudo-only">Curvas qualitativas e fases prescritas: não usar os números para calcular gradientes de pressão. Os dois lados do coração compartilham uma dinâmica simplificada. Em telas estreitas, deslize os traçados horizontalmente.</p>
       <div class="cl-detail estudo-only"></div>
     </div>
     <div class="cl-controls">
       <div class="grp transport"></div>
       <div class="grp speed" role="radiogroup" aria-label="Velocidade"></div>
       <div class="grp layers" aria-label="Camadas"></div>
-      <div class="cl-note">Modelo esquemático: valores ilustrativos, sem precisão quantitativa.</div>
+      <div class="grp frames" aria-label="Avanço por quadro"></div>
+      <div class="cl-note">Modelo esquemático: valores ilustrativos. Quadros de 10 ms (Shift + setas). B3/B4 opcionais não representam o ciclo normal habitual.</div>
     </div>`;
 
   const heart = createHeart(node.querySelector('.cl-heart'));
@@ -68,6 +71,12 @@ export function cycleLab(node) {
   const bReset = button({ icon: 'restart', label: 'Reiniciar' });
   const bSound = button({ icon: 'mute', label: 'Som esquemático das bulhas', text: 'Som', pressed: false });
   tr.append(bPrev, bPlay, bNext, bReset, bSound);
+  const bFramePrev = button({ label: 'Quadro anterior de 10 ms (Shift + seta esquerda)', text: '−10 ms' });
+  const bFrameNext = button({ label: 'Próximo quadro de 10 ms (Shift + seta direita)', text: '+10 ms' });
+  const clock = document.createElement('output');
+  clock.className = 'mono cl-clock';
+  clock.setAttribute('aria-label', 'Tempo no ciclo');
+  node.querySelector('.frames').append(bFramePrev, clock, bFrameNext);
 
   const sp = node.querySelector('.speed');
   const spBtns = SPEEDS.map((s) => {
@@ -120,6 +129,8 @@ export function cycleLab(node) {
     const st = stateAt(t);
     heart.update(st, dtReal);
     plots.update(st);
+    clock.textContent = `${Math.round(st.t * 1000)} / 800 ms`;
+    node.dataset.time = st.t;
     if (shownPhase !== st.phase.id) {
       shownPhase = st.phase.id;
       ph.n.textContent = st.phase.n;
@@ -180,6 +191,14 @@ export function cycleLab(node) {
     const i = PHASES.indexOf(cur);
     goPhase(PHASES[(i + dir + PHASES.length) % PHASES.length].id);
   }
+  function frameStep(dir) {
+    pause();
+    t = advanceFrame(t, dir);
+    heart.reset();
+    render(0);
+  }
+  bFramePrev.addEventListener('click', () => frameStep(-1));
+  bFrameNext.addEventListener('click', () => frameStep(1));
 
   bPlay.addEventListener('click', () => (playing ? pause() : play()));
   bPrev.addEventListener('click', () => step(-1));
@@ -195,8 +214,8 @@ export function cycleLab(node) {
   captureKeys(node, (e) => {
     if (e.target !== node && e.target.closest('.cl-controls') && (e.key === ' ' || e.key === 'Enter')) return false;
     if (e.key === ' ' || e.key === 'k') { playing ? pause() : play(); return true; }
-    if (e.key === 'ArrowRight') { step(1); return true; }
-    if (e.key === 'ArrowLeft') { step(-1); return true; }
+    if (e.key === 'ArrowRight') { e.shiftKey ? frameStep(1) : step(1); return true; }
+    if (e.key === 'ArrowLeft') { e.shiftKey ? frameStep(-1) : step(-1); return true; }
     if (e.key === 'Home') { pause(); t = 0; render(0.05); return true; }
     return false;
   });

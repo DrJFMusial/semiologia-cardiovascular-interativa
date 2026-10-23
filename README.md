@@ -8,17 +8,18 @@ Aplicação educacional estática (HTML5, CSS, JavaScript) para a aula de semiol
 - **Modo apresentação**: tela 16:9 (1600 × 900) escalada sem corte para qualquer projetor, navegação por setas, notas do apresentador.
 - **Modo estudo**: documento rolável e responsivo para computador e celular, com os mesmos simuladores e textos complementares.
 
-Versão atual: **0.2.0, protótipo funcional (fase 2)**. Não há back-end, login nem coleta de dados.
+Versão atual: **0.2.1, primeira iteração auditada localmente**. Não há back-end, login nem coleta de dados.
 
 ## Requisitos
 
-- Node.js 18 ou superior (testado com Node 22) e npm.
+- Node.js 22.12+ e npm (verificado localmente com Node 24.19.0; CI configurada para Node 22).
 - Navegador atual: Chrome, Edge ou Firefox.
 
 ## Instalar e executar
 
 ```bash
-npm install          # instala reveal.js, Vite e o plugin de arquivo único
+npm ci               # instala as versões exatas do package-lock.json
+npm test             # lógica determinística do modelo e das respostas
 npm run dev          # servidor local com recarga automática (http://localhost:5173)
 ```
 
@@ -41,6 +42,7 @@ O `dist/` usa caminhos relativos (`base: './'`) e funciona em qualquer subdiret�
 |---|---|
 | ← → | Slide anterior ou seguinte (fora dos simuladores) |
 | Clique no simulador, depois ← → | Fase anterior ou seguinte do ciclo (não troca de slide) |
+| Shift + ← → no simulador | Quadro anterior ou seguinte de 10 ms; pausa a reprodução |
 | Espaço | Reproduzir ou pausar o ciclo (com o simulador em foco) |
 | ↑ ↓ | Trocar o som na ausculta |
 | M | Menu de seções |
@@ -92,7 +94,13 @@ O núcleo (`src/core`, estilos e simuladores) é independente do conteúdo. Uma 
 | Pacote | Versão | Licença | Uso |
 |---|---|---|---|
 | reveal.js | 5.2.1 | MIT | motor de apresentação e notas do apresentador |
-| vite | 5.4.11 | MIT | servidor de desenvolvimento e build (só desenvolvimento) |
-| vite-plugin-singlefile | 2.0.3 | MIT | build offline em arquivo único (só desenvolvimento) |
+| vite | 7.3.7 | MIT | servidor de desenvolvimento e build (só desenvolvimento) |
+| vite-plugin-singlefile | 2.3.4 | MIT | build offline em arquivo único (só desenvolvimento) |
 
-Fontes: Inter e IBM Plex Mono, SIL Open Font License 1.1, incluídas em `src/assets/fonts`. Créditos completos em [`docs/CREDITOS_E_LICENCAS.md`](docs/CREDITOS_E_LICENCAS.md).
+Fontes: Inter e IBM Plex Mono, SIL Open Font License 1.1, incluídas em `src/assets/fonts`. Créditos atuais em [ASSET_CREDITS.md](ASSET_CREDITS.md); o documento em `docs/` é histórico.
+
+## Auditoria e evolução
+
+[AUDIT.md](AUDIT.md) reúne diagnóstico, problemas e verificações; [SCIENTIFIC_VALIDATION.md](SCIENTIFIC_VALIDATION.md) separa evidência de simplificação e limitações. [ARCHITECTURE.md](ARCHITECTURE.md), [CHANGELOG.md](CHANGELOG.md) e [ROADMAP.md](ROADMAP.md) orientam a manutenção.
+
+As pressões são curvas qualitativas, não um solver hemodinâmico causal. Gravações clínicas autênticas e novos simuladores permanecem pendentes. Os sons existentes são síntese esquemática. Publicação ainda não realizada.

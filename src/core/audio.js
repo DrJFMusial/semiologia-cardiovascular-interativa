@@ -105,7 +105,7 @@ export const CASOS = {
   },
   b4: {
     nome: 'Quarta bulha (B4)', onomatopeia: 'tu-TUM-TA',
-    descricao: 'Som grave logo antes de B1, durante a contração atrial contra um ventrículo pouco complacente. Pode ser ouvido em crianças e adultos jovens; no adulto, interpretar no contexto. Campânula, ápice, decúbito lateral esquerdo.',
+    descricao: 'Som grave pré-sistólico, logo antes de B1, associado à contração atrial e frequentemente à redução da complacência ventricular. Não é achado fisiológico habitual de crianças ou adultos jovens. Exige contração atrial eficaz e não ocorre na fibrilação atrial. Pesquisar com a campânula, no ápice, em decúbito lateral esquerdo. Referência: Clinical Methods, capítulo 25.',
     legenda: 'Três sons: um som grave e fraco logo antes de B1, depois B1 e B2.',
     eventos: [{ t: 0.075, tipo: 'B4' }, { t: 0.12, tipo: 'B1' }, { t: 0.42, tipo: 'B2' }],
   },
