@@ -257,11 +257,12 @@ export function korotkoffSim(node) {
     if (!active) return;
     const dt = last == null ? 0 : Math.min(0.1, (now - last) / 1000);
     last = now;
-    if (valve && p > 0) p = Math.max(0, p - rate * dt);
+    const changing = valve && p > 0;
+    if (changing) p = Math.max(0, p - rate * dt);
     if (p === 0 && valve) { valve = false; bValve.querySelector('span').textContent = 'Abrir válvula'; }
     tBeat += dt;
     if (tBeat >= RR) { tBeat -= RR; batimento(); }
-    render();
+    if (changing) render();
     raf = requestAnimationFrame(frame);
   }
 

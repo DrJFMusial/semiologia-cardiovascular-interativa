@@ -48,6 +48,11 @@ export function buildShell(deck, { modo }) {
   if (modo !== 'estudo') right.append(bNotes);
   right.append(bFull);
   document.body.appendChild(bar);
+  // Reserva a altura real, inclusive após zoom, rotação e áreas seguras.
+  new ResizeObserver(() => document.documentElement.style.setProperty('--appbar-height', `${bar.getBoundingClientRect().height}px`)).observe(bar);
+  bar.addEventListener('keydown', e => {
+    if ([' ', 'Enter', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) e.stopPropagation();
+  });
 
   // ---- volume ----
   const paint = ({ volume, muted }) => {
@@ -65,6 +70,7 @@ export function buildShell(deck, { modo }) {
   const menu = document.createElement('div');
   menu.className = 'sections-menu';
   menu.setAttribute('role', 'dialog');
+  menu.setAttribute('aria-modal', 'true');
   menu.setAttribute('aria-label', 'Seções da aula');
   menu.hidden = true;
   const slides = deck.getSlides();
@@ -84,6 +90,7 @@ export function buildShell(deck, { modo }) {
     menu.hidden = !on;
     bMenu.setAttribute('aria-expanded', String(on));
     if (on) menu.querySelector(`[data-i="${deck.getIndices().h}"]`)?.focus();
+    else bMenu.focus({ preventScroll: true });
   };
   bMenu.addEventListener('click', () => toggleMenu());
   menu.addEventListener('click', (e) => {
@@ -91,12 +98,22 @@ export function buildShell(deck, { modo }) {
     if (b) { deck.slide(Number(b.dataset.i)); toggleMenu(false); }
     else if (e.target === menu) toggleMenu(false);
   });
-  menu.addEventListener('keydown', (e) => { e.stopPropagation(); if (e.key === 'Escape') toggleMenu(false); });
+  menu.addEventListener('keydown', (e) => {
+    e.stopPropagation();
+    if (e.key === 'Escape') { e.preventDefault(); toggleMenu(false); }
+    if (e.key === 'Tab') {
+      const buttons = [...menu.querySelectorAll('button')];
+      const first = buttons[0], last = buttons.at(-1);
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
 
   // ---- demais ----
   bHome.addEventListener('click', () => deck.slide(0));
   bModo.addEventListener('click', () => {
     const u = new URL(location.href);
+    u.hash = `/${deck.getIndices().h}`;
     if (modo === 'estudo') u.searchParams.set('modo', 'apresentacao'); else u.searchParams.set('modo', 'estudo');
     location.href = u.toString();
   });
@@ -104,14 +121,15 @@ export function buildShell(deck, { modo }) {
   bMotion.addEventListener('click', () => {
     const on = !document.documentElement.classList.contains('reduce-motion');
     document.documentElement.classList.toggle('reduce-motion', on);
+    if (on) pauseAll();
     bMotion.setAttribute('aria-pressed', String(on));
     try { localStorage.setItem('reduce-motion', on ? '1' : '0'); } catch { /* armazenamento indisponível */ }
   });
   bNotes.addEventListener('click', () => deck.getPlugin('notes')?.open());
   const fsTarget = document.documentElement;
   bFull.addEventListener('click', () => {
-    if (document.fullscreenElement) document.exitFullscreen();
-    else fsTarget.requestFullscreen?.();
+    const action = document.fullscreenElement ? document.exitFullscreen() : fsTarget.requestFullscreen?.();
+    action?.catch(() => { bFull.title = 'Tela cheia indisponível neste navegador'; });
   });
 
   // no modo apresentação a barra some após alguns segundos sem uso do mouse

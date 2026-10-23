@@ -74,14 +74,14 @@ body.modo-estudo .estudo-only { display: block; }
 body.modo-estudo .slide-head.compact { height: auto; padding-bottom: 18px; }
 body.modo-estudo .s-capa h1 { font-size: clamp(44px, 7vw, 84px); }
 body.modo-estudo .capa-sub { font-size: clamp(18px, 2.2vw, 24px); margin-bottom: 30px; }
-@media (max-width: 900px) {
-  .s-capa .capa-grid, .caso-grid { grid-template-columns: 1fr; gap: 26px; }
-  .caso-path, .roadmap { grid-template-columns: 1fr; }
-  .roadmap > div, .roadmap > div:nth-child(3n+2), .roadmap > div:nth-child(3n) { padding: 18px 0; border-left: 0; }
-  .caso-facts > div { grid-template-columns: 1fr; gap: 4px; }
-  .caso-id h2 { font-size: 38px; margin-bottom: 18px; }
-  .caso-quote { font-size: 22px; }
-  .caso-facts dd { font-size: 17px; }
-  .slide-head h2, .reveal .slide-head h2, .slide-head.compact h2 { font-size: 26px; }
-  .roteiro-foot { font-size: 16px; }
+@media (max-width: 1200px) {
+  body.modo-estudo .s-capa .capa-grid, body.modo-estudo .caso-grid { grid-template-columns: 1fr; gap: 26px; }
+  body.modo-estudo .caso-path, body.modo-estudo .roadmap { grid-template-columns: 1fr; }
+  body.modo-estudo .roadmap > div, body.modo-estudo .roadmap > div:nth-child(3n+2), body.modo-estudo .roadmap > div:nth-child(3n) { padding: 18px 0; border-left: 0; }
+  body.modo-estudo .caso-facts > div { grid-template-columns: 1fr; gap: 4px; }
+  body.modo-estudo .caso-id h2 { font-size: 38px; margin-bottom: 18px; }
+  body.modo-estudo .caso-quote { font-size: 22px; }
+  body.modo-estudo .caso-facts dd { font-size: 17px; }
+  body.modo-estudo .slide-head h2, body.modo-estudo .reveal .slide-head h2, body.modo-estudo .slide-head.compact h2 { font-size: 26px; }
+  body.modo-estudo .roteiro-foot { font-size: 16px; }
 }
