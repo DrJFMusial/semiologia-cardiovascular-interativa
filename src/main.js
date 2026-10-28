@@ -15,6 +15,7 @@ import './styles/components.css';
 import './styles/sections.css';
 import './styles/heart.css';
 import './styles/theme.css';
+import './styles/authorship.css';
 
 import { register, mountAll } from './core/registry.js';
 import { buildShell } from './core/shell.js';

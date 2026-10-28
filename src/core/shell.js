@@ -5,6 +5,7 @@
 import { button, ICON } from './ui.js';
 import { setVolume, setMuted, audioState, onAudioChange } from './audio.js';
 import { pauseAll } from './registry.js';
+import { buildAuthorship } from './authorship.js';
 import { toggleTheme } from './theme.js';
 
 export function buildShell(deck, { modo }) {
@@ -133,4 +134,5 @@ export function buildShell(deck, { modo }) {
     if (e.key === 'x' || e.key === 'X') { pauseAll(); }
     if (e.key === 'Home') { deck.slide(0); }
   });
+  buildAuthorship();
 }

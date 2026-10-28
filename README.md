@@ -111,3 +111,7 @@ O professor autorizou a atualização da aplicação publicada. Envio a main exe
 | vite-plugin-singlefile | 2.3.4 | MIT | build offline em arquivo único (só desenvolvimento) |
 
 Fontes: Inter e IBM Plex Mono, SIL Open Font License 1.1, incluídas em `src/assets/fonts`. Créditos completos em [`docs/CREDITOS_E_LICENCAS.md`](docs/CREDITOS_E_LICENCAS.md).
+
+## Autoria e acesso à outra aula
+
+Autor: Prof. João Frederico Musial. Material didático digital interativo. © 2026 João Frederico Musial. Todos os direitos reservados sobre os elementos originais, ressalvadas as utilizações legalmente permitidas e as licenças de terceiros. Consulte [COPYRIGHT.md](COPYRIGHT.md). A identificação e o botão de direitos aparecem somente na última tela de referências, junto ao link para a aula respiratória.
