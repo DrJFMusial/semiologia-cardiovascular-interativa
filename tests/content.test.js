@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import {readFileSync,readdirSync,existsSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 const root=fileURLToPath(new URL('../',import.meta.url));
-test('29 telas e todas as imagens referenciadas disponíveis',()=>{
+test('30 telas e todas as imagens referenciadas disponíveis',()=>{
   const slides=readdirSync(root+'src/slides').filter(f=>f.endsWith('.html'));
-  assert.equal(slides.length,29);
+  assert.equal(slides.length,30);
   const all=slides.map(f=>readFileSync(root+'src/slides/'+f,'utf8')).join('\n');
   const images=[...all.matchAll(/@img\/([\w.-]+)/g)].map(m=>m[1]);
   assert.ok(images.length>=7);
