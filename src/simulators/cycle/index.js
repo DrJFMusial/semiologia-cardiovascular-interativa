@@ -38,7 +38,7 @@ export function cycleLab(node) {
     </div>
     <div class="cl-right">
       <div class="cl-plots"></div>
-      <p class="cl-model-note estudo-only">Curvas qualitativas e fases prescritas: não usar os números para calcular gradientes de pressão. Os dois lados do coração compartilham uma dinâmica simplificada. Em telas estreitas, deslize os traçados horizontalmente.</p>
+      <p class="cl-model-note estudo-only">Curvas qualitativas e fases prescritas: não usar os números para calcular gradientes de pressão. Os dois lados do coração compartilham uma dinâmica simplificada. Em slides estreitas, deslize os traçados horizontalmente.</p>
       <div class="cl-detail estudo-only"></div>
     </div>
     <div class="cl-controls">

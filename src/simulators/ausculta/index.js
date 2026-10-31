@@ -34,7 +34,7 @@ export function drawWave(canvas, buf, { ciclos, cicloSeg, caso, progress = -1, s
     g.globalAlpha = 1;
     g.fillStyle = c('--ink-3', '#6b7d89'); g.font = '600 11px Inter Variable, sans-serif';
     g.textAlign = 'center';
-    if (x(cicloSeg) > 150) { // em telas estreitas, rótulos só no primeiro ciclo
+    if (x(cicloSeg) > 150) { // em slides estreitas, rótulos só no primeiro ciclo
       g.fillText('sístole', x(b + 0.27 * k), h - 6);
       g.fillText('diástole', x(b + 0.61 * k), h - 6);
     } else if (n === 0) {

@@ -360,29 +360,28 @@ body.modo-estudo .pulsos { height: 640px; }
 body.modo-estudo .pvj { height: 640px; }
 body.modo-estudo .insp-grid .hs-fig img { height: auto; max-height: 640px; }
 @media (max-width: 1000px) {
-  .sintomas { grid-template-columns: 1fr; }
-  .sx { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
-  .sx li { opacity: 1; transform: none; }
-  .risco-grid, .prep-grid, .pa-grid, .carot-grid, .perc-grid, .palp-grid, .insp-grid, .pos-grid, .esteto-grid, .ritmo-grid,
-  .sopro, .edema-grid, .registro, .checklist, .levar, .pvj-grid, .pulsos-grid, .eg-bottom { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  body.modo-estudo .sintomas { grid-template-columns: 1fr; }
+  body.modo-estudo .sx { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  body.modo-estudo .sx li { opacity: 1; transform: none; }
+  body.modo-estudo .risco-grid, body.modo-estudo .prep-grid, body.modo-estudo .pa-grid, body.modo-estudo .carot-grid, body.modo-estudo .perc-grid, body.modo-estudo .palp-grid, body.modo-estudo .insp-grid, body.modo-estudo .pos-grid, body.modo-estudo .esteto-grid, body.modo-estudo .ritmo-grid, body.modo-estudo .sopro, body.modo-estudo .edema-grid, body.modo-estudo .registro, body.modo-estudo .checklist, body.modo-estudo .levar, body.modo-estudo .pvj-grid, body.modo-estudo .pulsos-grid, body.modo-estudo .eg-bottom { grid-template-columns: minmax(0, 1fr); gap: 22px; }
   body.modo-estudo .korotkoff { grid-template-columns: minmax(0, 1fr) 150px; }
   body.modo-estudo .ko-panel { grid-column: 1 / -1; }
   body.modo-estudo .ko-strip { height: 360px; }
-  .seq { grid-template-columns: 1fr 1fr; }
-  .seq li + li { border-left: 0; padding-left: 0; }
-  .pulsos { grid-template-columns: 1fr; }
+  body.modo-estudo .seq { grid-template-columns: 1fr 1fr; }
+  body.modo-estudo .seq li + li { border-left: 0; padding-left: 0; }
+  body.modo-estudo .pulsos { grid-template-columns: 1fr; }
   body.modo-estudo .pulsos { height: auto; }
   body.modo-estudo .pu-fig { height: 520px; }
   body.modo-estudo .pvj { height: auto; }
   body.modo-estudo .pv-fig { height: 300px; }
-  .so-form { grid-template-columns: 1fr; }
-  .levar li, .levar li:nth-child(even) { padding: 20px 0; border-left: 0; }
-  .insp-grid .hs-fig img, body.modo-estudo .insp-grid .hs-fig img { height: auto; width: 100%; max-width: 100%; }
-  .hs-fig { display: block; }
-  .pa-fig img { max-height: 360px; }
-  .rg-row { grid-template-columns: 1fr; gap: 6px; }
-  .rg-siglas dl { grid-template-columns: 1fr; }
-  section li { font-size: 16.5px; }
-  .ictus { grid-template-columns: repeat(3, 1fr); }
-  .hs-mark { width: 30px; height: 30px; font-size: 14px; }
+  body.modo-estudo .so-form { grid-template-columns: 1fr; }
+  body.modo-estudo .levar li, body.modo-estudo .levar li:nth-child(even) { padding: 20px 0; border-left: 0; }
+  body.modo-estudo .insp-grid .hs-fig img, body.modo-estudo .insp-grid .hs-fig img { height: auto; width: 100%; max-width: 100%; }
+  body.modo-estudo .hs-fig { display: block; }
+  body.modo-estudo .pa-fig img { max-height: 360px; }
+  body.modo-estudo .rg-row { grid-template-columns: 1fr; gap: 6px; }
+  body.modo-estudo .rg-siglas dl { grid-template-columns: 1fr; }
+  body.modo-estudo section li { font-size: 16.5px; }
+  body.modo-estudo .ictus { grid-template-columns: repeat(3, 1fr); }
+  body.modo-estudo .hs-mark { width: 30px; height: 30px; font-size: 14px; }
 }

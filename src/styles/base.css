@@ -125,9 +125,9 @@ body.modo-estudo .appbar {
 @media (max-width: 720px) {
   body.modo-estudo .reveal .slides { padding: 64px 10px 40px; gap: 16px; }
   body.modo-estudo .reveal .slides > section { padding: 20px 16px 24px !important; border-radius: 14px; }
-  .ab-brand span, .ab-vol input, .ab-right .btn span { display: none; }
-  .ab-brand b { font-size: 12.5px; }
-  .ab-right { gap: 0; }
-  .sm-inner { grid-template-columns: 1fr; }
-  .sections-menu { place-items: start stretch; padding: 56px 8px 8px; }
+  body.modo-estudo .ab-brand span, body.modo-estudo .ab-vol input, body.modo-estudo .ab-right .btn span { display: none; }
+  body.modo-estudo .ab-brand b { font-size: 12.5px; }
+  body.modo-estudo .ab-right { gap: 0; }
+  body.modo-estudo .sm-inner { grid-template-columns: 1fr; }
+  body.modo-estudo .sections-menu { place-items: start stretch; padding: 56px 8px 8px; }
 }

@@ -73,6 +73,6 @@
 /* Figuras anatômicas de pele/osso preservam as cores; os textos externos seguem o tema. */
 [data-theme="dark"] .pu-pt .halo { fill: var(--paper); }
 @media (max-width: 420px) {
-  .ab-brand { display: none; }
+  body.modo-estudo .ab-brand { display: none; }
   body.modo-estudo .appbar { justify-content: center; padding-inline: 6px; }
 }

@@ -254,39 +254,39 @@ body.modo-estudo .an-figure, body.modo-estudo .fo-figure { height: 620px; }
 body.modo-estudo .fo-body { max-height: none; }
 
 @media (max-width: 1000px) {
-  .cycle-lab, body.modo-estudo .cycle-lab, .anatomy, .focos, .ausculta { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-  .cl-left, .cl-right, .cl-controls { min-width: 0; }
+  body.modo-estudo .cycle-lab, body.modo-estudo .cycle-lab, body.modo-estudo .anatomy, body.modo-estudo .focos, body.modo-estudo .ausculta { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  body.modo-estudo .cl-left, body.modo-estudo .cl-right, body.modo-estudo .cl-controls { min-width: 0; }
   body.modo-estudo .cl-heart { height: min(78vw, 420px); }
   body.modo-estudo .an-figure { height: min(88vw, 560px); }
   body.modo-estudo .fo-figure { height: min(80vw, 560px); }
-  .cl-note { margin-left: 0; max-width: none; }
-  .au-list { flex-direction: row; flex-wrap: wrap; border-top: 0; gap: 6px; }
-  .au-item { border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; flex: 1 1 45%; }
-  .au-item.on::before { display: none; }
-  .au-item.on { border-color: var(--petrol-2); }
-  .au-item-n { font-size: 15px; }
-  .au-title { font-size: 24px; }
-  .au-wave { height: 170px; }
-  .rt-track { grid-template-columns: 1fr 1fr; gap: 26px 0; }
-  .rt-step:nth-child(3) { border-left: 0; padding-left: 0; }
-  .qe-opts { grid-template-columns: 1fr 1fr; }
-  .an-card { min-height: 0; }
-  .an-card h4, .fo-body h4 { font-size: 24px; }
-  .an-card p, .fo-body p { font-size: 16.5px; }
+  body.modo-estudo .cl-note { margin-left: 0; max-width: none; }
+  body.modo-estudo .au-list { flex-direction: row; flex-wrap: wrap; border-top: 0; gap: 6px; }
+  body.modo-estudo .au-item { border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; flex: 1 1 45%; }
+  body.modo-estudo .au-item.on::before { display: none; }
+  body.modo-estudo .au-item.on { border-color: var(--petrol-2); }
+  body.modo-estudo .au-item-n { font-size: 15px; }
+  body.modo-estudo .au-title { font-size: 24px; }
+  body.modo-estudo .au-wave { height: 170px; }
+  body.modo-estudo .rt-track { grid-template-columns: 1fr 1fr; gap: 26px 0; }
+  body.modo-estudo .rt-step:nth-child(3) { border-left: 0; padding-left: 0; }
+  body.modo-estudo .qe-opts { grid-template-columns: 1fr 1fr; }
+  body.modo-estudo .an-card { min-height: 0; }
+  body.modo-estudo .an-card h4, body.modo-estudo .fo-body h4 { font-size: 24px; }
+  body.modo-estudo .an-card p, body.modo-estudo .fo-body p { font-size: 16.5px; }
 }
 @media (max-width: 560px) {
-  .rt-track { grid-template-columns: 1fr; }
-  .rt-step, .rt-step + .rt-step { padding: 0; border-left: 0; }
-  .rt-n { font-size: 52px; }
-  .rt-name { font-size: 24px; }
-  .rt-q { font-size: 19px; }
-  .qe-opts { grid-template-columns: 1fr; }
-  .qe-q { font-size: 21px; }
-  .cl-readout { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .au-head { flex-direction: column; gap: 8px; }
-  .cl-controls { gap: 10px; }
+  body.modo-estudo .rt-track { grid-template-columns: 1fr; }
+  body.modo-estudo .rt-step, body.modo-estudo .rt-step + .rt-step { padding: 0; border-left: 0; }
+  body.modo-estudo .rt-n { font-size: 52px; }
+  body.modo-estudo .rt-name { font-size: 24px; }
+  body.modo-estudo .rt-q { font-size: 19px; }
+  body.modo-estudo .qe-opts { grid-template-columns: 1fr; }
+  body.modo-estudo .qe-q { font-size: 21px; }
+  body.modo-estudo .cl-readout { grid-template-columns: 1fr 1fr; gap: 8px; }
+  body.modo-estudo .au-head { flex-direction: column; gap: 8px; }
+  body.modo-estudo .cl-controls { gap: 10px; }
 }
 @media (max-width: 760px) {
-  .cl-plots { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  body.modo-estudo .cl-plots { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   body.modo-estudo .cl-plots .plots-svg { width: 760px; max-width: none; }
 }
